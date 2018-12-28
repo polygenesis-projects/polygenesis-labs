@@ -32,9 +32,7 @@ public class PlaceHolder {
   }
 
   public void thisisaverybignameasjdhkshdkshdkhaskdiuashdiuahsdiuhashdiuashdiuashuidsaidasd(
-      int a, int b, int a1, int b1, int a2, int b2) {
-    throw new UnsupportedOperationException();
-  }
+      int a, int b, int a1, int b1, int a2, int b2) {}
 
   int add(int a, int b) {
     return a + b;

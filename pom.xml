@@ -62,6 +62,7 @@
         <java.version>1.8</java.version>
 
         <!--BUILD-->
+        <oregor-build-tools-java.version>0.0.1-SNAPSHOT</oregor-build-tools-java.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.7</nexus-staging-maven-plugin.version>
@@ -74,11 +75,18 @@
         <license-maven-plugin.version>1.14</license-maven-plugin.version>
         <fmt-maven-plugin.version>2.6.0</fmt-maven-plugin.version>
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
+        <checkstyle.version>8.15</checkstyle.version>
 
     </properties>
 
     <dependencies>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <!-- ===================================================================== -->
@@ -108,10 +116,6 @@
                     <version>${license-maven-plugin.version}</version>
                     <configuration>
                         <licenseName>apache_v2</licenseName>
-                        <!--<licenseResolver>classpath://license</licenseResolver>-->
-                        <!--&lt;!&ndash;<descriptionTemplate>${basedir}/src/license/licenseDescription.ftl</descriptionTemplate>&ndash;&gt;-->
-                        <!--<canUpdateCopyright>true</canUpdateCopyright>-->
-                        <!--<canUpdateDescription>true</canUpdateDescription>-->
                         <addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
                         <emptyLineAfterHeader>true</emptyLineAfterHeader>
                         <failOnMissingHeader>true</failOnMissingHeader>
@@ -129,42 +133,6 @@
                             <exclude>**/*.yml</exclude>
                         </excludes>
                     </configuration>
-                    <!--<dependencies>-->
-                    <!--<dependency>-->
-                    <!--<groupId>io.polygenesis</groupId>-->
-                    <!--<artifactId>build-tools</artifactId>-->
-                    <!--<version>${buildToolsVersion}</version>-->
-                    <!--</dependency>-->
-                    <!--</dependencies>-->
-                    <executions>
-                        <!--<execution>-->
-                        <!--<phase>validate</phase>-->
-                        <!--<goals>-->
-                        <!--<goal>check-file-header</goal>-->
-                        <!--</goals>-->
-                        <!--</execution>-->
-                        <execution>
-                            <phase>compile</phase>
-                            <goals>
-                                <goal>update-file-header</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <!-- ===================================================================== -->
-                <!-- Code format                                                           -->
-                <!-- ===================================================================== -->
-                <plugin>
-                    <groupId>com.coveo</groupId>
-                    <artifactId>fmt-maven-plugin</artifactId>
-                    <version>${fmt-maven-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
                 <!-- ===================================================================== -->
                 <!-- SCA: CHECKSTYLE                                                       -->
@@ -177,12 +145,19 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>8.15</version>
+                            <version>${checkstyle.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>com.oregor</groupId>
+                            <artifactId>oregor-build-tools-java</artifactId>
+                            <version>${oregor-build-tools-java.version}</version>
                         </dependency>
                     </dependencies>
                     <configuration>
-                        <configLocation>src/checkstyle/checkstyle.xml</configLocation>
-                        <suppressionsLocation>src/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
+                        <configLocation>src/main/resources/oregor/build/tools/checkstyle/checkstyle.xml</configLocation>
+                        <suppressionsLocation>
+                            src/main/resources/oregor/build/tools/checkstyle/checkstyle-suppressions.xml
+                        </suppressionsLocation>
                         <consoleOutput>true</consoleOutput>
                         <failsOnError>true</failsOnError>
                         <failOnViolation>true</failOnViolation>
@@ -199,59 +174,8 @@
                     </executions>
                 </plugin>
                 <!-- ===================================================================== -->
-                <!-- Nexus Staging                                                         -->
+                <!-- RELEASE                                                               -->
                 <!-- ===================================================================== -->
-                <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>${nexus-staging-maven-plugin.version}</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <serverId>ossrh-polygenesis</serverId>
-                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>${maven-source-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>attach-sources</id>
-                            <goals>
-                                <goal>jar-no-fork</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${maven-javadoc-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>attach-javadocs</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>${maven-gpg-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>sign-artifacts</id>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>sign</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
@@ -260,10 +184,13 @@
                         <tagNameFormat>v@{project.version}</tagNameFormat>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <useReleaseProfile>false</useReleaseProfile>
-                        <releaseProfiles>release</releaseProfiles>
+                        <releaseProfiles>sources,javadocs,codesign,nexus</releaseProfiles>
                         <goals>deploy</goals>
                     </configuration>
                 </plugin>
+                <!-- ===================================================================== -->
+                <!-- SONAR                                                                 -->
+                <!-- ===================================================================== -->
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
@@ -273,50 +200,181 @@
         </pluginManagement>
 
         <!-- ===================================================================== -->
-        <!-- Build Plugins                                                         -->
+        <!-- BUILD PLUGINS                                                         -->
         <!-- ===================================================================== -->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>license-maven-plugin</artifactId>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>com.coveo</groupId>-->
-                <!--<artifactId>fmt-maven-plugin</artifactId>-->
-            <!--</plugin>-->
         </plugins>
     </build>
 
-
-    <!--PROFILES-->
+    <!-- ===================================================================== -->
+    <!-- ===================================================================== -->
+    <!-- PROFILES                                                              -->
+    <!-- ===================================================================== -->
+    <!-- ===================================================================== -->
     <profiles>
 
         <!-- ===================================================================== -->
-        <!-- RELEASE                                                               -->
+        <!-- SOURCES                                                               -->
         <!-- ===================================================================== -->
         <profile>
-            <id>release</id>
+            <id>sources</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- ===================================================================== -->
+        <!-- JAVADOCS                                                              -->
+        <!-- ===================================================================== -->
+        <profile>
+            <id>javadocs</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${maven-javadoc-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- ===================================================================== -->
+        <!-- CODE SIGN                                                             -->
+        <!-- ===================================================================== -->
+        <profile>
+            <id>codesign</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- ===================================================================== -->
+        <!-- NEXUS STAGING                                                         -->
+        <!-- ===================================================================== -->
+        <profile>
+            <id>nexus</id>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${nexus-staging-maven-plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh-oregor</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
                     </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- ===================================================================== -->
+        <!-- VALIDATE LICENSE                                                      -->
+        <!-- ===================================================================== -->
+        <profile>
+            <id>validate-license</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>license-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>check-file-header</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- ===================================================================== -->
+        <!-- VALIDATE CODE FORMAT                                                  -->
+        <!-- ===================================================================== -->
+        <profile>
+            <id>validate-code-format</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.coveo</groupId>
+                        <artifactId>fmt-maven-plugin</artifactId>
+                        <version>${fmt-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- ===================================================================== -->
+        <!-- VALIDATE CODE STYLE                                                   -->
+        <!-- ===================================================================== -->
+        <profile>
+            <id>validate-code-style</id>
+            <build>
+                <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>

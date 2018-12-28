@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-if [ "$TRAVIS_BRANCH" = 'master' ]; then
+if [ "$TRAVIS_BRANCH" = 'master' ] && [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
     ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
-fi
-if [ "$TRAVIS_BRANCH" != 'master' ]; then
+else
     ./mvnw test -B
 fi

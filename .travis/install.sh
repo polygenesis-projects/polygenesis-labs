@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+./mvnw install -P validate-license,validate-code-format,validate-code-style -DskipTests=true -Dmaven.javadoc.skip=true -B -V
