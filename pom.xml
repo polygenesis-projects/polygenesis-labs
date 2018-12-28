@@ -62,7 +62,7 @@
         <java.version>1.8</java.version>
 
         <!--BUILD-->
-        <oregor-build-tools-java.version>0.0.1-SNAPSHOT</oregor-build-tools-java.version>
+        <oregor-build-tools-java.version>0.0.1</oregor-build-tools-java.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.7</nexus-staging-maven-plugin.version>
@@ -154,9 +154,8 @@
                         </dependency>
                     </dependencies>
                     <configuration>
-                        <configLocation>src/main/resources/oregor/build/tools/checkstyle/checkstyle.xml</configLocation>
-                        <suppressionsLocation>
-                            src/main/resources/oregor/build/tools/checkstyle/checkstyle-suppressions.xml
+                        <configLocation>oregor/build/tools/checkstyle/checkstyle.xml</configLocation>
+                        <suppressionsLocation>oregor/build/tools/checkstyle/checkstyle-suppressions.xml
                         </suppressionsLocation>
                         <consoleOutput>true</consoleOutput>
                         <failsOnError>true</failsOnError>
