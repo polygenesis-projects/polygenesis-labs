@@ -1,0 +1,25 @@
+language: java
+
+cache:
+  directories:
+    - "~/.m2/repository"
+    - "~/.sonar/cache"
+
+addons:
+  sonarcloud:
+    organization: "polygenesis-io"
+    token:
+      secure: "rvhyrMBCI7gnVqdjI90M9kkp3jt94FCFErnDzssfH4x+p/Ocrt9i47BHSewBsLp9ozwv0IYjJGFoNpLgWLIT9j561TRHtUgRAHUqqmCxxrTLTpc4DbjmOmLq4jxVHlyGt3PleRmJI2QkJ4krQs9+CAe/U4n1SYl7zrFLS99duCWX7mOCjddF8OpqRVrs1D4RSgU8lxBMHF4KTdTzpDFM+90qGiJ4+Rl4XYeeMaUSGLLzMrJ0hoclYgZHcmI6b2Vc01OfdVPrN5uoP9jE/2jQ6DhSE12OKq/VDMc0oHMzqd0jeH1g/2nIa8zL6jWSXQbZDtr29LQHMHfM779PRviDWKGqvcppogymnnHa6evpfwbbouVyBrsOEcw97aN626Banei46QQsLXv/91J6nVKYVzaZxCazYHBFQBUuQQoB2Q6qziIvL4HrYZ6sGIRKiLr+mEnD0YBaBPXHbqmFD40v9Y7x+1DySnnbYC2WWH/NivhjyGxghW7psyDIiEnBMZo8utJ/OXNLSzclVTm0LvpAlrfgFY280ehTewPsOap+DCFr23M/2+3OGam2bVA78sESbsp7bJDnMUmJK/BKb+aoU+0iSxdfssfBH3FLiw0HU2XOWn6Yq4vyheJIsof4FrsPezIp6keUmSxEZZQqJMpmc5SLT2EcQ+amLoh9GqF05bw="
+
+
+before_install:
+  - "./.travis/before-install.sh"
+
+install:
+  - "./.travis/install.sh"
+
+script:
+  - "./.travis/test.sh"
+
+after_success:
+  - "./.travis/deploy.sh"
