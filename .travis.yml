@@ -5,12 +5,6 @@ cache:
     - "~/.m2/repository"
     - "~/.sonar/cache"
 
-addons:
-  sonarcloud:
-    organization: "polygenesis-projects"
-    token:
-      secure: "NqnWQsYA792G32AykAJHCvvfVIWmfJOEtuagmHDs1AvHV9zTUsWiDFXEfsudn2o3UOi8YIsZUGQQLL85gup9Ekf1QmtEPDUt7FCyxGNfRwT3kxE2iSqUeI8x9bEQPDanX91gaau6wNqRtI6NnIs46WYTB7HkC6P85Z7PW161h3Vdg6/qK6EX7ZTI32mA6VaFywPh5tQ/ai9iO7zPj6gHOm99SL0sPo4CkDv+zF+MR6pzr5wprtTOQjynU/5M3iigY14t9fNs1mU3T5Mv6MznqKzbXAif728m3Kf4RqClCjlUYXCGkXK+L1lqFsCMEzInkGv4yMofv7Vl3TsTalhKhhdcqiToq/dYGLbdoT/IBZG8LAMfV0v0px6JIs2n7SYRo52xYmE5sChB+JvbEAU6oYAk/RXej45CB4FOtutYvd+5/yL8ykFyahDE4DtFYGLKhDmJUisQixhBasOl9a8RneePwZ8xBBiWoAOUyhfazV0Me90VXVMU7SEuaaMdBgJCZKGwjkNYxEPzWAt1q26yv/EuzSJo55iKvapALIY09O04BuiatFvfrFF5VNIFCAKfR6aHIzJ6zSaK5wirXQRyFAYn/7VULAdxhvATZ9ZFh+WcfWWF+G6VblJs2amJKdKc69i+qkXhEZT6mB+9DuToBB5L7Prgt/mwL5+NFGbbjWA="
-
 before_install:
   - "./.travis/before-install.sh"
 
