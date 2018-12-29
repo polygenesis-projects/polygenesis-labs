@@ -32,7 +32,7 @@
 
 * Christos Tsakostas: ct at oregor dot com
 
-Thanks for your kind assistence! :smile:
+Thanks for your kind assistance! :smile:
 
 Christos Tsakostas and the PolyGenesis team
 
