@@ -84,7 +84,6 @@
 
     <dependencyManagement>
         <dependencies>
-
         </dependencies>
     </dependencyManagement>
 
@@ -133,6 +132,14 @@
                             <exclude>**/*.yml</exclude>
                         </excludes>
                     </configuration>
+                </plugin>
+                <!-- ===================================================================== -->
+                <!-- CODE FORMAT                                                           -->
+                <!-- ===================================================================== -->
+                <plugin>
+                    <groupId>com.coveo</groupId>
+                    <artifactId>fmt-maven-plugin</artifactId>
+                    <version>${fmt-maven-plugin.version}</version>
                 </plugin>
                 <!-- ===================================================================== -->
                 <!-- SCA: CHECKSTYLE                                                       -->
@@ -344,7 +351,6 @@
                     <plugin>
                         <groupId>com.coveo</groupId>
                         <artifactId>fmt-maven-plugin</artifactId>
-                        <version>${fmt-maven-plugin.version}</version>
                         <executions>
                             <execution>
                                 <goals>
