@@ -67,7 +67,7 @@ public class ThingTest extends AbstractEqualityTest<Thing> {
   private Function createFunction1() {
     return new Function(
         new Thing(new Text("thingName")),
-        new Goal("someGoal"),
+        new GoalType("someGoal"),
         new Text("functionName"),
         new LinkedHashSet<>(),
         new ReturnValue(createIoModelPrimitive()));
@@ -76,7 +76,7 @@ public class ThingTest extends AbstractEqualityTest<Thing> {
   private Function createFunction2() {
     return new Function(
         new Thing(new Text("thingName")),
-        new Goal("someGoal"),
+        new GoalType("someGoal"),
         new Text("anotherFunctionName"),
         new LinkedHashSet<>(),
         new ReturnValue(createIoModelPrimitive()));
@@ -85,7 +85,7 @@ public class ThingTest extends AbstractEqualityTest<Thing> {
   private Function createFunction3() {
     return new Function(
         new Thing(new Text("thingName")),
-        new Goal("someGoal"),
+        new GoalType("someGoal"),
         new Text("someAnotherNewFunctionName"),
         new LinkedHashSet<>(),
         new ReturnValue(createIoModelPrimitive()));

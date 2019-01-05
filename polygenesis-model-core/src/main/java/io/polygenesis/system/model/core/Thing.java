@@ -27,7 +27,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * {@link Thing} is defined as a concept or an entity on or for which a {@link Goal} is defined.
+ * {@link Thing} is defined as a concept or an entity on or for which a {@link GoalType} is defined.
  * Most commonly, the names of the domain business concepts will be defined as things, being
  * concrete entities or more abstract concepts.
  *

@@ -26,24 +26,24 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.Test;
 
 /** @author Christos Tsakostas */
-public class GoalTest {
+public class GoalTypeTest {
 
   @Test
   public void shouldSucceed() {
-    Goal goal = new Goal("someGoal");
+    GoalType goalType = new GoalType("someGoal");
 
-    assertThat(goal).isNotNull();
-    assertThat(goal.getOriginal()).isEqualTo("someGoal");
+    assertThat(goalType).isNotNull();
+    assertThat(goalType.getOriginal()).isEqualTo("someGoal");
   }
 
   @Test
   public void shouldThrowExceptionForNull() {
-    assertThatThrownBy(() -> new Goal(null)).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> new GoalType(null)).isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
   public void shouldThrowExceptionForEmpty() {
-    assertThatThrownBy(() -> new Goal("")).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> new GoalType("")).isInstanceOf(IllegalArgumentException.class);
   }
 
   // ===============================================================================================
@@ -51,46 +51,46 @@ public class GoalTest {
   // ===============================================================================================
   @Test
   public void equalityShouldSucceedForTwoEqualObjects() {
-    Goal goal1 = new Goal("xxx");
-    Goal goal2 = new Goal("xxx");
+    GoalType goalType1 = new GoalType("xxx");
+    GoalType goalType2 = new GoalType("xxx");
 
-    assertThat(goal1.equals(goal2)).isTrue();
+    assertThat(goalType1.equals(goalType2)).isTrue();
   }
 
   @Test
   public void equalityShouldSucceedForSameObject() {
-    Goal goal1 = new Goal("xxx");
+    GoalType goalType1 = new GoalType("xxx");
 
-    assertThat(goal1.equals(goal1)).isTrue();
+    assertThat(goalType1.equals(goalType1)).isTrue();
   }
 
   @Test
   public void equalityShouldFailForNotEqualObjects() {
-    Goal goal1 = new Goal("xxx");
-    Goal goal2 = new Goal("yyy");
+    GoalType goalType1 = new GoalType("xxx");
+    GoalType goalType2 = new GoalType("yyy");
 
-    assertThat(goal1.equals(goal2)).isFalse();
+    assertThat(goalType1.equals(goalType2)).isFalse();
   }
 
   @Test
   public void equalityShouldFailForNullInput() {
-    Goal goal1 = new Goal("xxx");
+    GoalType goalType1 = new GoalType("xxx");
 
-    assertThat(goal1.equals(null)).isFalse();
+    assertThat(goalType1.equals(null)).isFalse();
   }
 
   @Test
   public void equalityShouldFailForDifferentObject() {
-    Goal goal1 = new Goal("xxx");
+    GoalType goalType1 = new GoalType("xxx");
     Object object = new Object();
 
-    assertThat(goal1.equals(object)).isFalse();
+    assertThat(goalType1.equals(object)).isFalse();
   }
 
   @Test
   public void hashCodeShouldNotBeNull() {
-    Goal goal1 = new Goal("xxx");
+    GoalType goalType1 = new GoalType("xxx");
 
-    assertThat(goal1.hashCode()).isNotNull();
+    assertThat(goalType1.hashCode()).isNotNull();
   }
 }

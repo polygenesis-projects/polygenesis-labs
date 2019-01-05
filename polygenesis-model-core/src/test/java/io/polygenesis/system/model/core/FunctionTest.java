@@ -36,7 +36,7 @@ public class FunctionTest {
 
     assertThat(function1).isNotNull();
     assertThat(function1.getThing()).isNotNull();
-    assertThat(function1.getGoal()).isNotNull();
+    assertThat(function1.getGoalType()).isNotNull();
     assertThat(function1.getName()).isNotNull();
     assertThat(function1.getReturnValue()).isNotNull();
     assertThat(function1.getArguments()).isNotNull();
@@ -48,7 +48,7 @@ public class FunctionTest {
 
     assertThat(function1).isNotNull();
     assertThat(function1.getThing()).isNotNull();
-    assertThat(function1.getGoal()).isNotNull();
+    assertThat(function1.getGoalType()).isNotNull();
     assertThat(function1.getName()).isNotNull();
     assertThat(function1.getReturnValue()).isNotNull();
 
@@ -61,7 +61,7 @@ public class FunctionTest {
 
     assertThat(function1).isNotNull();
     assertThat(function1.getThing()).isNotNull();
-    assertThat(function1.getGoal()).isNotNull();
+    assertThat(function1.getGoalType()).isNotNull();
     assertThat(function1.getName()).isNotNull();
     assertThat(function1.getArguments()).isNotNull();
 
@@ -123,7 +123,7 @@ public class FunctionTest {
   private Function createFunction1() {
     return new Function(
         new Thing(new Text("thingName")),
-        new Goal("someGoal"),
+        new GoalType("someGoal"),
         new Text("functionName"),
         new LinkedHashSet<>(),
         new ReturnValue(createIoModelPrimitive()));
@@ -132,7 +132,7 @@ public class FunctionTest {
   private Function createFunction2() {
     return new Function(
         new Thing(new Text("thingName")),
-        new Goal("someGoal"),
+        new GoalType("someGoal"),
         new Text("anotherFunctionName"),
         new LinkedHashSet<>(),
         new ReturnValue(createIoModelPrimitive()));
@@ -141,7 +141,7 @@ public class FunctionTest {
   private Function createFunctionWithReturnValueAndNoArguments() {
     return new Function(
         new Thing(new Text("thingName")),
-        new Goal("someGoal"),
+        new GoalType("someGoal"),
         new Text("functionName"),
         new ReturnValue(createIoModelPrimitive()));
   }
@@ -149,7 +149,7 @@ public class FunctionTest {
   private Function createFunctionWithArgumentsAndNoReturnValue() {
     return new Function(
         new Thing(new Text("thingName")),
-        new Goal("someGoal"),
+        new GoalType("someGoal"),
         new Text("functionName"),
         new LinkedHashSet<>());
   }

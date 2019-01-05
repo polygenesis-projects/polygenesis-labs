@@ -107,7 +107,7 @@ public class FunctionIdentifier {
 
       if (thing.equals(thingToExamine)) {
 
-        Goal goal = new Goal(annotationGFunction.goal());
+        GoalType goalType = new GoalType(annotationGFunction.goal());
 
         // =========================================================================================
         // METHOD OUTPUT
@@ -147,7 +147,8 @@ public class FunctionIdentifier {
         }
 
         Function function =
-            new Function(thing, goal, identifyName(annotationGFunction), arguments, returnValue);
+            new Function(
+                thing, goalType, identifyName(annotationGFunction), arguments, returnValue);
 
         return Optional.of(function);
       } else {

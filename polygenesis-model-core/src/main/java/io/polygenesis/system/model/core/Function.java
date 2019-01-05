@@ -27,8 +27,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * In the context of automatic programming, Function is defined as an activity expressing what has
- * to be done, the {@link Goal}, written by a programmer in a specific programming language to or
- * the purpose of a {@link Thing} characterized by a Name, and Properties provided as
+ * to be done, the {@link GoalType}, written by a programmer in a specific programming language to
+ * or the purpose of a {@link Thing} characterized by a Name, and Properties provided as
  * activity&rsquo;s optional arguments and return value.
  *
  * @author Christos Tsakostas
@@ -38,8 +38,8 @@ public class Function {
   /** The {@link Thing} the Function belongs to. */
   private Thing thing;
 
-  /** The {@link Goal} of the Function. */
-  private Goal goal;
+  /** The {@link GoalType} of the Function. */
+  private GoalType goalType;
 
   /**
    * The name of the Function.
@@ -58,9 +58,9 @@ public class Function {
   // CONSTRUCTOR(S)
   // ===============================================================================================
 
-  private Function(Thing thing, Goal goal, Text name) {
+  private Function(Thing thing, GoalType goalType, Text name) {
     setThing(thing);
-    setGoal(goal);
+    setGoalType(goalType);
     setName(name);
   }
 
@@ -68,12 +68,12 @@ public class Function {
    * Instantiates a new Function with ReturnValue.
    *
    * @param thing the thing
-   * @param goal the goal
+   * @param goalType the goalType
    * @param name the name
    * @param returnValue the return value
    */
-  public Function(Thing thing, Goal goal, Text name, ReturnValue returnValue) {
-    this(thing, goal, name);
+  public Function(Thing thing, GoalType goalType, Text name, ReturnValue returnValue) {
+    this(thing, goalType, name);
     setReturnValue(returnValue);
   }
 
@@ -81,12 +81,12 @@ public class Function {
    * Instantiates a new Function with Arguments.
    *
    * @param thing the thing
-   * @param goal the goal
+   * @param goalType the goalType
    * @param name the name
    * @param arguments the arguments
    */
-  public Function(Thing thing, Goal goal, Text name, Set<Argument> arguments) {
-    this(thing, goal, name);
+  public Function(Thing thing, GoalType goalType, Text name, Set<Argument> arguments) {
+    this(thing, goalType, name);
     setArguments(arguments);
   }
 
@@ -94,14 +94,14 @@ public class Function {
    * Instantiates a new Function with ReturnValue and Arguments.
    *
    * @param thing the thing
-   * @param goal the goal
+   * @param goalType the goalType
    * @param name the name
    * @param arguments the arguments
    * @param returnValue the return value
    */
   public Function(
-      Thing thing, Goal goal, Text name, Set<Argument> arguments, ReturnValue returnValue) {
-    this(thing, goal, name, arguments);
+      Thing thing, GoalType goalType, Text name, Set<Argument> arguments, ReturnValue returnValue) {
+    this(thing, goalType, name, arguments);
     setReturnValue(returnValue);
   }
 
@@ -119,12 +119,12 @@ public class Function {
   }
 
   /**
-   * Gets goal.
+   * Gets goalType.
    *
-   * @return the goal
+   * @return the goalType
    */
-  public Goal getGoal() {
-    return goal;
+  public GoalType getGoalType() {
+    return goalType;
   }
 
   /**
@@ -162,8 +162,8 @@ public class Function {
     this.thing = thing;
   }
 
-  private void setGoal(Goal goal) {
-    this.goal = goal;
+  private void setGoalType(GoalType goalType) {
+    this.goalType = goalType;
   }
 
   private void setName(Text name) {
@@ -196,7 +196,7 @@ public class Function {
 
     return new EqualsBuilder()
         .append(thing, function.thing)
-        .append(goal, function.goal)
+        .append(goalType, function.goalType)
         .append(name, function.name)
         .append(returnValue, function.returnValue)
         .append(arguments, function.arguments)
@@ -207,7 +207,7 @@ public class Function {
   public int hashCode() {
     return new HashCodeBuilder(17, 37)
         .append(thing)
-        .append(goal)
+        .append(goalType)
         .append(name)
         .append(returnValue)
         .append(arguments)

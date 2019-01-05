@@ -80,7 +80,7 @@ public class CoreModelRepositoryTest {
 
     Function someFunction =
         new Function(
-            someThing, new Goal("someGoal"), new Text("someFunction"), new LinkedHashSet<>());
+            someThing, new GoalType("someGoal"), new Text("someFunction"), new LinkedHashSet<>());
 
     someThing.appendFunction(someFunction);
 

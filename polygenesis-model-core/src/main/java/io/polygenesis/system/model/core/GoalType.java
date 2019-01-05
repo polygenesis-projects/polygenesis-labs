@@ -23,11 +23,11 @@ package io.polygenesis.system.model.core;
 import io.polygenesis.shared.valueobject.Text;
 
 /**
- * One of the most essential parts of PolyGenesis is the Goal. Based on the Goal, deducers are able
- * to instantiate the technology models.
+ * One of the most essential parts of PolyGenesis is the GoalType. Based on the GoalType, deducers
+ * are able to instantiate the technology models.
  *
  * <p>It is highly preferable to use one of the constants provided at {@link GoalStandardType}, in
- * order to instantiate a Goal.
+ * order to instantiate a GoalType.
  *
  * <p>For the rare cases that available types in {@link GoalStandardType} are not adequate to
  * describe your goal, it is possible to pass any goal type as string.
@@ -37,18 +37,18 @@ import io.polygenesis.shared.valueobject.Text;
  *
  * @author Christos Tsakostas
  */
-public class Goal extends Text {
+public class GoalType extends Text {
 
   // ===============================================================================================
   // CONSTRUCTOR(S)
   // ===============================================================================================
 
   /**
-   * Instantiates a new Goal.
+   * Instantiates a new GoalType.
    *
    * @param goalType the goal type
    */
-  public Goal(String goalType) {
+  public GoalType(String goalType) {
     super(goalType);
   }
 }
