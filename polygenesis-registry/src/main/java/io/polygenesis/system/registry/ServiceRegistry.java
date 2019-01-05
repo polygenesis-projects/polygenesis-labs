@@ -31,6 +31,9 @@ import io.polygenesis.system.model.core.MethodAnalyzer;
 import io.polygenesis.system.model.core.RecursiveObjectFiller;
 import io.polygenesis.system.model.core.ThingScanner;
 import io.polygenesis.system.model.core.TypesAnalyzer;
+import io.polygenesis.system.redux.ReduxDeducer;
+import io.polygenesis.system.redux.ReduxDeducerImpl;
+import io.polygenesis.system.redux.ReduxStoreDeducer;
 
 /**
  * Singletons of PolyGenesis Services and Components.
@@ -54,6 +57,10 @@ final class ServiceRegistry {
   private static FunctionIdentifier functionIdentifier;
   private static CoreDeducer coreDeducer;
 
+  // REDUX
+  private static ReduxStoreDeducer reduxStoreDeducer;
+  private static ReduxDeducer reduxDeducer;
+
   static {
     classScanner = new ClassScanner();
 
@@ -76,7 +83,15 @@ final class ServiceRegistry {
         new FunctionIdentifier(methodAnalyzer, recursiveObjectFiller, ioModelDeducer);
 
     coreDeducer = new AnnotationsCoreDeducerImpl(classScanner, thingScanner, functionIdentifier);
+
+    // REDUX
+    reduxStoreDeducer = new ReduxStoreDeducer();
+    reduxDeducer = new ReduxDeducerImpl(reduxStoreDeducer);
   }
+
+  // ===============================================================================================
+  // GETTERS
+  // ===============================================================================================
 
   /**
    * Gets core deducer.
@@ -85,5 +100,14 @@ final class ServiceRegistry {
    */
   public static CoreDeducer getCoreDeducer() {
     return coreDeducer;
+  }
+
+  /**
+   * Gets redux deducer.
+   *
+   * @return the redux deducer
+   */
+  public static ReduxDeducer getReduxDeducer() {
+    return reduxDeducer;
   }
 }

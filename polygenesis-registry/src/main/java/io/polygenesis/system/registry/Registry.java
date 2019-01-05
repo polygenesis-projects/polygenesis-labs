@@ -25,7 +25,6 @@ import io.polygenesis.system.Generator;
 import io.polygenesis.system.Model;
 import io.polygenesis.system.model.core.CoreDeducer;
 import io.polygenesis.system.model.core.CoreModel;
-import io.polygenesis.system.redux.DefaultReduxDeducer;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -73,7 +72,7 @@ public final class Registry {
   private static Set<Deducer> initializeDeducers() {
     Set<Deducer> deducers = new LinkedHashSet<>();
 
-    deducers.add(new DefaultReduxDeducer());
+    deducers.add(ServiceRegistry.getReduxDeducer());
 
     return deducers;
   }

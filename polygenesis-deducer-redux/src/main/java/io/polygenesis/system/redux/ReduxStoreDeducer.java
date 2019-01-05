@@ -20,9 +20,26 @@
 
 package io.polygenesis.system.redux;
 
+import io.polygenesis.system.model.core.Thing;
+
 /**
- * Deduces REDUX Actions.
+ * The type Store deducer.
  *
  * @author Christos Tsakostas
  */
-public interface ActionDeducer {}
+public class ReduxStoreDeducer {
+
+  // ===============================================================================================
+  // FUNCTIONALITY
+  // ===============================================================================================
+
+  /**
+   * Deduce store for thing store.
+   *
+   * @param thing the thing
+   * @return the store
+   */
+  public Store deduceStoreForThing(Thing thing) {
+    return new Store(new Feature(thing.getName().getModified()));
+  }
+}

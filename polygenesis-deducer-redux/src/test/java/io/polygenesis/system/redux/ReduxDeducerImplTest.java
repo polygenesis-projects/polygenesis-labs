@@ -20,28 +20,26 @@
 
 package io.polygenesis.system.redux;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import io.polygenesis.system.CoreModelRepository;
+import io.polygenesis.system.model.core.CoreModelRepositoryImpl;
 import java.util.LinkedHashSet;
+import org.junit.Test;
 
-/**
- * The type Default redux deducer.
- *
- * @author Christos Tsakostas
- */
-public class DefaultReduxDeducer implements ReduxDeducer {
+/** @author Christos Tsakostas */
+public class ReduxDeducerImplTest {
 
-  @Override
-  public ReduxRepository deduce(CoreModelRepository coreModelRepository) {
-    return new ReduxRepository(new LinkedHashSet<>());
-  }
+  @Test
+  public void deduce() {
+    ReduxStoreDeducer reduxStoreDeducer = new ReduxStoreDeducer();
+    ReduxDeducer reduxDeducer = new ReduxDeducerImpl(reduxStoreDeducer);
+    CoreModelRepository coreModelRepository = new CoreModelRepositoryImpl(new LinkedHashSet<>());
 
-  @Override
-  public String name() {
-    throw new UnsupportedOperationException();
-  }
+    ReduxRepository reduxRepository = reduxDeducer.deduce(coreModelRepository);
 
-  @Override
-  public String description() {
-    throw new UnsupportedOperationException();
+    assertThat(reduxRepository).isNotNull();
+    assertThat(reduxRepository.getStores()).isNotNull();
+    assertThat(reduxRepository.getStores().size()).isEqualTo(0);
   }
 }

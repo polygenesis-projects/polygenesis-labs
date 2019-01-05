@@ -20,7 +20,6 @@
 
 package io.polygenesis.system.redux;
 
-import io.polygenesis.system.CoreModelRepository;
 import io.polygenesis.system.Deducer;
 
 /**
@@ -28,13 +27,4 @@ import io.polygenesis.system.Deducer;
  *
  * @author Christos Tsakostas
  */
-public interface ReduxDeducer extends Deducer {
-
-  /**
-   * Deduce store repository.
-   *
-   * @param coreModelRepository the core repository
-   * @return the store repository
-   */
-  ReduxRepository deduce(CoreModelRepository coreModelRepository);
-}
+public interface ReduxDeducer extends Deducer<ReduxRepository> {}
