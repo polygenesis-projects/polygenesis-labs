@@ -36,7 +36,7 @@ import org.springframework.core.annotation.AnnotationUtils;
  *
  * @author Christos Tsakostas
  */
-class FunctionIdentifier {
+public class FunctionIdentifier {
 
   private static final Logger LOG = LoggerFactory.getLogger(FunctionIdentifier.class);
 
@@ -55,7 +55,7 @@ class FunctionIdentifier {
    * @param recursiveObjectFiller the recursive object filler
    * @param ioModelDeducer the io model deducer
    */
-  FunctionIdentifier(
+  public FunctionIdentifier(
       MethodAnalyzer methodAnalyzer,
       RecursiveObjectFiller recursiveObjectFiller,
       IoModelDeducer ioModelDeducer) {

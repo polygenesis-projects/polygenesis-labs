@@ -18,35 +18,13 @@
  * ===========================LICENSE_END==================================
  */
 
-package io.polygenesis.system.generator.angular;
-
-import io.polygenesis.system.Generator;
-import io.polygenesis.system.Model;
-import java.util.Set;
+package io.polygenesis.system;
 
 /**
- * Implement an Angular source code generator.
+ * In-memory repository for the instances of a {@link Model}.
+ *
+ * <p>The implementation is up to the model.
  *
  * @author Christos Tsakostas
  */
-public class AngularMaterialGenerator implements Generator {
-
-  private static final String NAME = "Angular Material";
-  private static final String DESCRIPTION =
-      "PolyGenesis sample generator for Angular Material & NGRX";
-
-  @Override
-  public void generate(Set<Model> models) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public String name() {
-    return NAME;
-  }
-
-  @Override
-  public String description() {
-    return DESCRIPTION;
-  }
-}
+public interface ModelRepository {}

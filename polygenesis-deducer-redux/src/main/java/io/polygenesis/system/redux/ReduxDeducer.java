@@ -20,7 +20,7 @@
 
 package io.polygenesis.system.redux;
 
-import io.polygenesis.system.model.core.CoreModelRepository;
+import io.polygenesis.system.CoreModelRepository;
 
 /**
  * The interface Redux deducer.

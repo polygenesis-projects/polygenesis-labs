@@ -20,23 +20,23 @@
 
 package io.polygenesis.system.creator;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import org.junit.BeforeClass;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.Test;
 
 /** @author Christos Tsakostas */
 public class CreatorTodoAppTest {
 
-  private static Creator creator;
-
-  @BeforeClass
-  public static void setUp() {
-    creator = new Creator();
-  }
-
   @Test
   public void shouldGenerateByAnnotations() {
-    assertThat(creator).isNotNull();
+    // 1. Define the set of packages to be scanned for your annotated API.
+    Set<String> packagesToScan = new HashSet<>(Arrays.asList("io.polygenesis.demo.todo.api"));
+
+    // 2. Define your local machine generation path were code will be generated.
+    String generationPath = "~/polygenesis/todo";
+
+    // 3. Go!
+    Creator.getInstance().generate(new CreatorRequest(packagesToScan, generationPath));
   }
 }

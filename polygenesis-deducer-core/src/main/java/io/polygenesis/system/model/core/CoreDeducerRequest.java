@@ -35,6 +35,10 @@ public class CoreDeducerRequest {
   private Set<String> interfaces;
   private InclusionOrExclusionType interfacesInclusionOrExclusionType;
 
+  // ===============================================================================================
+  // CONSTRUCTOR(S)
+  // ===============================================================================================
+
   /**
    * Instantiates a new Core deducer request.
    *
@@ -114,4 +118,8 @@ public class CoreDeducerRequest {
 
     this.interfacesInclusionOrExclusionType = interfacesInclusionOrExclusionType;
   }
+
+  // ===============================================================================================
+  // OVERRIDES
+  // ===============================================================================================
 }

@@ -18,18 +18,21 @@
  * ===========================LICENSE_END==================================
  */
 
-package io.polygenesis.system.generator;
-
-import io.polygenesis.system.Identification;
-import io.polygenesis.system.model.Model;
-import java.util.Set;
+package io.polygenesis.system;
 
 /**
- * Contract for PolyGenesis Generators.
+ * Contract for PolyGenesis Deducers.
  *
+ * @param <R> the type parameter ModelRepository
  * @author Christos Tsakostas
  */
-public interface Generator extends Identification {
+public interface Deducer<R extends ModelRepository> extends Identification {
 
-  void generate(Set<Model> models);
+  /**
+   * Deduces a model's repository.
+   *
+   * @param coreModelRepository the core model repository
+   * @return the ModelRepository
+   */
+  R deduce(CoreModelRepository coreModelRepository);
 }

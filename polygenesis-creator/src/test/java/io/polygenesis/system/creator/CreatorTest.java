@@ -23,6 +23,7 @@ package io.polygenesis.system.creator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.LinkedHashSet;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -33,7 +34,7 @@ public class CreatorTest {
 
   @BeforeClass
   public static void setUp() {
-    creator = new Creator();
+    creator = Creator.getInstance();
   }
 
   @Test
@@ -43,6 +44,9 @@ public class CreatorTest {
 
   @Test
   public void generate() {
-    assertThatThrownBy(() -> creator.generate()).isInstanceOf(UnsupportedOperationException.class);
+    CreatorRequest request = new CreatorRequest(new LinkedHashSet<>(), "");
+
+    assertThatThrownBy(() -> creator.generate(request))
+        .isInstanceOf(IllegalArgumentException.class);
   }
 }

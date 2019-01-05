@@ -18,9 +18,7 @@
  * ===========================LICENSE_END==================================
  */
 
-package io.polygenesis.system.model;
-
-import io.polygenesis.system.Identification;
+package io.polygenesis.system;
 
 /**
  * Contract for PolyGenesis Models.

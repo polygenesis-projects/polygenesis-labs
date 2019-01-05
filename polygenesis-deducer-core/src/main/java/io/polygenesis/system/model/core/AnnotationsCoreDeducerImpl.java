@@ -20,6 +20,7 @@
 
 package io.polygenesis.system.model.core;
 
+import io.polygenesis.system.CoreModelRepository;
 import java.util.Set;
 
 /**
@@ -56,20 +57,29 @@ public class AnnotationsCoreDeducerImpl implements CoreDeducer {
   // ===============================================================================================
   // OVERRIDES
   // ===============================================================================================
-
   @Override
-  public CoreModelRepository deduce(CoreDeducerRequest request) {
+  public CoreModelRepository deduce(CoreDeducerRequest deducerRequest) {
     Set<Class<?>> classes =
         classScanner.identify(
-            request.getPackagesToScan(),
-            request.getInterfaces(),
-            request.getInterfacesInclusionOrExclusionType());
+            deducerRequest.getPackagesToScan(),
+            deducerRequest.getInterfaces(),
+            deducerRequest.getInterfacesInclusionOrExclusionType());
 
     Set<Thing> things = thingScanner.identifyThingsInInterfaces(classes);
 
     things.forEach(
         thing -> thing.appendFunctions(functionIdentifier.identifyFunctionsOf(thing, classes)));
 
-    return new CoreModelRepository(things);
+    return new CoreModelRepositoryImpl(things);
+  }
+
+  @Override
+  public String name() {
+    return "Core Deducer";
+  }
+
+  @Override
+  public String description() {
+    return "Deduces the core model based on PolyGenesis annotations at the API'";
   }
 }

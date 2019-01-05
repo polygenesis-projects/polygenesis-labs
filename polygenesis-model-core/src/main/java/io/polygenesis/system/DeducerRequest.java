@@ -18,62 +18,48 @@
  * ===========================LICENSE_END==================================
  */
 
-package io.polygenesis.system.model.core;
-
-import java.util.HashMap;
-import java.util.Map;
+package io.polygenesis.system;
 
 /**
- * Converts java types to PolyGenesis data types.
+ * The type Deducer request.
  *
  * @author Christos Tsakostas
  */
-public class DataTypeConverter {
+public abstract class DeducerRequest {
 
-  private static Map<String, DataType> dataTypeMap;
-
-  static {
-    initialize();
-  }
+  private CoreModelRepository coreModelRepository;
 
   // ===============================================================================================
-  // FUNCTIONALITY
+  // CONSTRUCTOR(S)
   // ===============================================================================================
 
   /**
-   * Convert data type.
+   * Instantiates a new Deducer request.
    *
-   * @param type the type
-   * @return the data type
+   * @param coreModelRepository the core model repository
    */
-  DataType convert(String type) {
-    if (dataTypeMap.containsKey(type)) {
-      return dataTypeMap.get(type);
-    } else {
-      throw new IllegalArgumentException(String.format("Type=%s could not be converted", type));
-    }
+  public DeducerRequest(CoreModelRepository coreModelRepository) {
+    setCoreModelRepository(coreModelRepository);
   }
 
   // ===============================================================================================
-  // PRIVATE
+  // GETTERS
   // ===============================================================================================
 
-  private static void initialize() {
-    dataTypeMap = new HashMap<>();
+  /**
+   * Gets core model repository.
+   *
+   * @return the core model repository
+   */
+  public CoreModelRepository getCoreModelRepository() {
+    return coreModelRepository;
+  }
 
-    dataTypeMap.put("void", DataType.VOID);
+  // ===============================================================================================
+  // GUARDS
+  // ===============================================================================================
 
-    dataTypeMap.put("java.lang.String", DataType.STRING);
-
-    dataTypeMap.put("int", DataType.INTEGER);
-    dataTypeMap.put("java.lang.Integer", DataType.INTEGER);
-
-    dataTypeMap.put("long", DataType.LONG);
-    dataTypeMap.put("java.lang.Long", DataType.LONG);
-
-    dataTypeMap.put("boolean", DataType.BOOLEAN);
-    dataTypeMap.put("java.lang.Boolean", DataType.BOOLEAN);
-
-    dataTypeMap.put("java.util.List", DataType.ARRAY);
+  private void setCoreModelRepository(CoreModelRepository coreModelRepository) {
+    this.coreModelRepository = coreModelRepository;
   }
 }

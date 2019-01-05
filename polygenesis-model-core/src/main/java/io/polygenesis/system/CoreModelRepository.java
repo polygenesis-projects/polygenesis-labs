@@ -20,25 +20,22 @@
 
 package io.polygenesis.system;
 
+import io.polygenesis.shared.valueobject.Text;
+import io.polygenesis.system.model.core.Function;
+import io.polygenesis.system.model.core.Thing;
+import java.util.Optional;
+import java.util.Set;
+
 /**
- * Identification contract used at {@link io.polygenesis.system.deducer.Deducer}, {@link
- * io.polygenesis.system.generator.Generator} and {@link io.polygenesis.system.model.Model}.
+ * The interface Core model repository.
  *
  * @author Christos Tsakostas
  */
-public interface Identification {
+public interface CoreModelRepository extends ModelRepository {
 
-  /**
-   * The name of deducer/model/generator.
-   *
-   * @return the name string
-   */
-  String name();
+  Set<Thing> getThings();
 
-  /**
-   * User-friendly description of the deducer/model/generator.
-   *
-   * @return the description string
-   */
-  String description();
+  Optional<Thing> getThingByName(Text thingName);
+
+  Optional<Function> getThingFunction(Text thingName, Text functionName);
 }

@@ -20,12 +20,15 @@
 
 package io.polygenesis.system.model.core;
 
+import io.polygenesis.system.CoreModelRepository;
+import io.polygenesis.system.Identification;
+
 /**
  * The interface Core Deducer.
  *
  * @author Christos Tsakostas
  */
-public interface CoreDeducer {
+public interface CoreDeducer extends Identification {
 
   /**
    * Deduce core model repository.

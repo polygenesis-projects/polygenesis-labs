@@ -23,7 +23,7 @@ package io.polygenesis.system.generator.angular;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import io.polygenesis.system.generator.Generator;
+import io.polygenesis.system.Generator;
 import java.util.LinkedHashSet;
 import org.junit.BeforeClass;
 import org.junit.Test;

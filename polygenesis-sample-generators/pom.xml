@@ -10,10 +10,10 @@
   <artifactId>polygenesis-sample-generators</artifactId>
 
   <dependencies>
-    <!--INTERFACES-->
+    <!--CORE MODEL-->
     <dependency>
       <groupId>io.polygenesis.labs</groupId>
-      <artifactId>polygenesis-interfaces</artifactId>
+      <artifactId>polygenesis-model-core</artifactId>
     </dependency>
 
     <!--TEST-->

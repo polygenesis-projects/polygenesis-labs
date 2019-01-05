@@ -23,6 +23,7 @@ package io.polygenesis.system.model.core;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import io.polygenesis.shared.valueobject.Text;
+import io.polygenesis.system.CoreModelRepository;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;

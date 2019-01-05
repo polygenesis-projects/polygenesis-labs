@@ -23,6 +23,7 @@ package io.polygenesis.system.model.core;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import io.polygenesis.shared.valueobject.Text;
+import io.polygenesis.system.CoreModelRepository;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.junit.Test;
@@ -32,7 +33,7 @@ public class CoreModelRepositoryTest {
 
   @Test
   public void shouldSucceedToMakeDeducer() {
-    CoreModelRepository repository = new CoreModelRepository(new LinkedHashSet<>());
+    CoreModelRepository repository = new CoreModelRepositoryImpl(new LinkedHashSet<>());
 
     assertThat(repository).isNotNull();
     assertThat(repository.getThings().size()).isEqualTo(0);
@@ -40,14 +41,14 @@ public class CoreModelRepositoryTest {
 
   @Test
   public void shouldSucceedToGetThingByName() {
-    CoreModelRepository repository = new CoreModelRepository(createThings());
+    CoreModelRepository repository = new CoreModelRepositoryImpl(createThings());
 
     assertThat(repository.getThingByName(new Text("someThing"))).isPresent();
   }
 
   @Test
   public void shouldSucceedToGetThingFunction() {
-    CoreModelRepository repository = new CoreModelRepository(createThings());
+    CoreModelRepository repository = new CoreModelRepositoryImpl(createThings());
 
     assertThat(repository.getThingFunction(new Text("someThing"), new Text("someFunction")))
         .isPresent();
@@ -55,7 +56,7 @@ public class CoreModelRepositoryTest {
 
   @Test
   public void shouldFailToGetThingFunction() {
-    CoreModelRepository repository = new CoreModelRepository(createThings());
+    CoreModelRepository repository = new CoreModelRepositoryImpl(createThings());
 
     assertThat(
             repository.getThingFunction(new Text("someThing"), new Text("someNonExistingFunction")))
@@ -64,7 +65,7 @@ public class CoreModelRepositoryTest {
 
   @Test
   public void shouldFailToGetThingFunctionForNonExistingThing() {
-    CoreModelRepository repository = new CoreModelRepository(createThings());
+    CoreModelRepository repository = new CoreModelRepositoryImpl(createThings());
 
     assertThat(
             repository.getThingFunction(

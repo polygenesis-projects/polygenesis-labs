@@ -35,7 +35,7 @@ import java.util.Set;
  *
  * @author Christos Tsakostas
  */
-class IoModelDeducer {
+public class IoModelDeducer {
 
   private final DataTypeConverter dataTypeConverter;
 
@@ -48,7 +48,7 @@ class IoModelDeducer {
    *
    * @param dataTypeConverter the data type converter
    */
-  IoModelDeducer(DataTypeConverter dataTypeConverter) {
+  public IoModelDeducer(DataTypeConverter dataTypeConverter) {
     this.dataTypeConverter = dataTypeConverter;
   }
 

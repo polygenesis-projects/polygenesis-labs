@@ -10,11 +10,16 @@
   <artifactId>polygenesis-creator</artifactId>
 
   <dependencies>
-
     <!--REGISTRY-->
     <dependency>
       <groupId>io.polygenesis.labs</groupId>
       <artifactId>polygenesis-registry</artifactId>
+    </dependency>
+
+    <!--YOUR_TODO_APP API-->
+    <dependency>
+      <groupId>io.polygenesis.demo</groupId>
+      <artifactId>your-todo-api</artifactId>
     </dependency>
 
     <!--TEST-->

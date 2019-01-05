@@ -22,7 +22,8 @@ package io.polygenesis.system.redux;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import io.polygenesis.system.model.core.CoreModelRepository;
+import io.polygenesis.system.CoreModelRepository;
+import io.polygenesis.system.model.core.CoreModelRepositoryImpl;
 import java.util.LinkedHashSet;
 import org.junit.Test;
 
@@ -32,7 +33,7 @@ public class DefaultReduxDeducerTest {
   @Test
   public void deduce() {
     DefaultReduxDeducer defaultReduxDeducer = new DefaultReduxDeducer();
-    CoreModelRepository coreModelRepository = new CoreModelRepository(new LinkedHashSet<>());
+    CoreModelRepository coreModelRepository = new CoreModelRepositoryImpl(new LinkedHashSet<>());
 
     assertThatThrownBy(() -> defaultReduxDeducer.deduce(coreModelRepository))
         .isInstanceOf(UnsupportedOperationException.class);

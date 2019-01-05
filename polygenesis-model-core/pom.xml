@@ -19,10 +19,6 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>polygenesis-input-annotations</artifactId>
     </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>polygenesis-interfaces</artifactId>
-    </dependency>
 
     <!--TEST-->
     <dependency>

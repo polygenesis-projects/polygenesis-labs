@@ -20,9 +20,10 @@
 
 package io.polygenesis.system.registry;
 
-import io.polygenesis.system.deducer.Deducer;
-import io.polygenesis.system.generator.Generator;
-import io.polygenesis.system.model.Model;
+import io.polygenesis.system.Deducer;
+import io.polygenesis.system.Generator;
+import io.polygenesis.system.Model;
+import io.polygenesis.system.model.core.CoreDeducer;
 import io.polygenesis.system.model.core.CoreModel;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -38,9 +39,9 @@ import java.util.Set;
  */
 public final class Registry {
 
-  private Set<Model> models;
-  private Set<Deducer> deducers;
-  private Set<Generator> generators;
+  private static Set<Model> models;
+  private static Set<Deducer> deducers;
+  private static Set<Generator> generators;
 
   // ===============================================================================================
   // SINGLETON
@@ -69,7 +70,9 @@ public final class Registry {
   }
 
   private static Set<Deducer> initializeDeducers() {
-    return new LinkedHashSet<>();
+    Set<Deducer> deducers = new LinkedHashSet<>();
+
+    return deducers;
   }
 
   private static Set<Generator> initializeGenerators() {
@@ -100,6 +103,15 @@ public final class Registry {
   // ===============================================================================================
   // QUERIES
   // ===============================================================================================
+
+  /**
+   * Gets core deducer.
+   *
+   * @return the core deducer
+   */
+  public CoreDeducer getCoreDeducer() {
+    return ServiceRegistry.getCoreDeducer();
+  }
 
   // ===============================================================================================
   // GETTERS

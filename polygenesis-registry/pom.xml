@@ -12,12 +12,6 @@
   <artifactId>polygenesis-registry</artifactId>
 
   <dependencies>
-    <!--INTERFACES-->
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>polygenesis-interfaces</artifactId>
-    </dependency>
-
     <!--MODELS-->
     <dependency>
       <groupId>${project.groupId}</groupId>

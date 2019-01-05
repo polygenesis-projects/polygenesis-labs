@@ -20,7 +20,8 @@
 
 package io.polygenesis.system.model.core;
 
-import io.polygenesis.system.model.Model;
+import io.polygenesis.system.CoreModelRepository;
+import io.polygenesis.system.Model;
 import java.util.LinkedHashSet;
 
 /**
@@ -32,7 +33,7 @@ public class CoreModel implements Model<CoreModelRepository> {
 
   @Override
   public CoreModelRepository repository() {
-    return new CoreModelRepository(new LinkedHashSet<>());
+    return new CoreModelRepositoryImpl(new LinkedHashSet<>());
   }
 
   @Override

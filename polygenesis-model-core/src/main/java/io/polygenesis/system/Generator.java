@@ -18,13 +18,16 @@
  * ===========================LICENSE_END==================================
  */
 
-package io.polygenesis.system.model;
+package io.polygenesis.system;
+
+import java.util.Set;
 
 /**
- * In-memory repository for the instances of a {@link Model}.
- *
- * <p>The implementation is up to the model.
+ * Contract for PolyGenesis Generators.
  *
  * @author Christos Tsakostas
  */
-public interface ModelRepository {}
+public interface Generator extends Identification {
+
+  void generate(Set<Model> models);
+}

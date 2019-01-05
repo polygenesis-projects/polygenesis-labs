@@ -18,13 +18,26 @@
  * ===========================LICENSE_END==================================
  */
 
-package io.polygenesis.system.deducer;
-
-import io.polygenesis.system.Identification;
+package io.polygenesis.system;
 
 /**
- * Contract for PolyGenesis Deducers.
+ * Identification contract used at {@link Deducer}, {@link Generator} and {@link Model}.
  *
  * @author Christos Tsakostas
  */
-public interface Deducer extends Identification {}
+public interface Identification {
+
+  /**
+   * The name of deducer/model/generator.
+   *
+   * @return the name string
+   */
+  String name();
+
+  /**
+   * User-friendly description of the deducer/model/generator.
+   *
+   * @return the description string
+   */
+  String description();
+}

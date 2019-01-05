@@ -21,7 +21,7 @@
 package io.polygenesis.system.model.core;
 
 import io.polygenesis.shared.valueobject.Text;
-import io.polygenesis.system.model.ModelRepository;
+import io.polygenesis.system.CoreModelRepository;
 import java.util.Optional;
 import java.util.Set;
 
@@ -32,7 +32,7 @@ import java.util.Set;
  *
  * @author Christos Tsakostas
  */
-public class CoreModelRepository implements ModelRepository {
+public class CoreModelRepositoryImpl implements CoreModelRepository {
 
   private Set<Thing> things;
 
@@ -45,7 +45,7 @@ public class CoreModelRepository implements ModelRepository {
    *
    * @param things the things
    */
-  public CoreModelRepository(Set<Thing> things) {
+  public CoreModelRepositoryImpl(Set<Thing> things) {
     setThings(things);
   }
 
@@ -59,6 +59,7 @@ public class CoreModelRepository implements ModelRepository {
    * @param thingName the thing name
    * @return the thing by name
    */
+  @Override
   public Optional<Thing> getThingByName(Text thingName) {
     return things.stream().filter(thing -> thing.getName().equals(thingName)).findFirst();
   }
@@ -70,6 +71,7 @@ public class CoreModelRepository implements ModelRepository {
    * @param functionName the function name
    * @return the thing function
    */
+  @Override
   public Optional<Function> getThingFunction(Text thingName, Text functionName) {
     Optional<Thing> optionalThing = getThingByName(thingName);
 
@@ -91,6 +93,7 @@ public class CoreModelRepository implements ModelRepository {
    *
    * @return the things
    */
+  @Override
   public Set<Thing> getThings() {
     return things;
   }
