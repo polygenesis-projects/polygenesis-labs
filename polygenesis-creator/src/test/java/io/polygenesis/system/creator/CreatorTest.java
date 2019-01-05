@@ -1,9 +1,9 @@
 /*-
- * ========================LICENSE_START=================================
+ * ==========================LICENSE_START=================================
  * PolyGenesis System
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * ========================================================================
  * Copyright (C) 2015 - 2019 OREGOR LTD
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * ========================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,11 +15,12 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * =========================LICENSE_END==================================
+ * ===========================LICENSE_END==================================
  */
 
 package io.polygenesis.system.creator;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.BeforeClass;
@@ -33,6 +34,11 @@ public class CreatorTest {
   @BeforeClass
   public static void setUp() {
     creator = new Creator();
+  }
+
+  @Test
+  public void shouldInitializeProperly() {
+    assertThat(creator).isNotNull();
   }
 
   @Test

@@ -17,27 +17,13 @@
  * limitations under the License.
  * ===========================LICENSE_END==================================
  */
+package io.polygenesis.system.creator;
 
-package io.polygenesis.system.model.core.iomodel;
+import java.util.Set;
 
-import io.polygenesis.shared.valueobject.Text;
+public class CreatorRequest {
 
-/** @author Christos Tsakostas */
-class TestIoModel extends IoModel {
-
-  public TestIoModel(IoModelGroup parent) {
-    super(parent);
-  }
-
-  public TestIoModel(Text dataType, Text variableName) {
-    super(dataType, variableName);
-  }
-
-  public TestIoModel(Text dataType, Text variableName, IoModelGroup parent) {
-    super(dataType, variableName, parent);
-  }
-
-  public TestIoModel(Text genericType, Text dataType, Text variableName) {
-    super(genericType, dataType, variableName);
-  }
+  private Set<String> packagesToScan;
+  private Set<String> interfacesIncluded;
+  private Set<String> interfacesExcluded;
 }

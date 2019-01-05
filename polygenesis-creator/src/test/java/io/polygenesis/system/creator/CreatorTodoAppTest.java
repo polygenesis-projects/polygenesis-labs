@@ -18,26 +18,25 @@
  * ===========================LICENSE_END==================================
  */
 
-package io.polygenesis.system.model.core.iomodel;
+package io.polygenesis.system.creator;
 
-import io.polygenesis.shared.valueobject.Text;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /** @author Christos Tsakostas */
-class TestIoModel extends IoModel {
+public class CreatorTodoAppTest {
 
-  public TestIoModel(IoModelGroup parent) {
-    super(parent);
+  private static Creator creator;
+
+  @BeforeClass
+  public static void setUp() {
+    creator = new Creator();
   }
 
-  public TestIoModel(Text dataType, Text variableName) {
-    super(dataType, variableName);
-  }
-
-  public TestIoModel(Text dataType, Text variableName, IoModelGroup parent) {
-    super(dataType, variableName, parent);
-  }
-
-  public TestIoModel(Text genericType, Text dataType, Text variableName) {
-    super(genericType, dataType, variableName);
+  @Test
+  public void shouldGenerateByAnnotations() {
+    assertThat(creator).isNotNull();
   }
 }
