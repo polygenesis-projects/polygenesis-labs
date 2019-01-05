@@ -37,20 +37,20 @@ public class ThingTest extends AbstractEqualityTest<Thing> {
 
     assertThat(thing).isNotNull();
 
-    Function function1 = createFunction1();
-    Function function2 = createFunction2();
-    Function function3 = createFunction3();
+    Goal goal1 = createGoal1();
+    Goal goal2 = createGoal2();
+    Goal goal3 = createGoal3();
 
-    Set<Function> functionSet = new LinkedHashSet<>();
-    functionSet.add(function2);
-    functionSet.add(function3);
+    Set<Goal> goalSet = new LinkedHashSet<>();
+    goalSet.add(goal2);
+    goalSet.add(goal3);
 
-    thing.appendFunction(function1);
-    thing.appendFunctions(functionSet);
+    thing.appendGoal(goal1);
+    thing.appendGoals(goalSet);
 
     assertThat(thing.getName()).isEqualTo(new Text("someThingName"));
     assertThat(thing.getParent()).isNull();
-    assertThat(thing.getFunctions().size()).isEqualTo(3);
+    assertThat(thing.getGoals().size()).isEqualTo(3);
   }
 
   @Test
@@ -64,29 +64,29 @@ public class ThingTest extends AbstractEqualityTest<Thing> {
     assertThat(thing.getParent()).isEqualTo(new Thing(new Text("someParentThingName")));
   }
 
-  private Function createFunction1() {
-    return new Function(
+  private Goal createGoal1() {
+    return new Goal(
         new Thing(new Text("thingName")),
         new GoalType("someGoal"),
-        new Text("functionName"),
+        new Text("goalName"),
         new LinkedHashSet<>(),
         new ReturnValue(createIoModelPrimitive()));
   }
 
-  private Function createFunction2() {
-    return new Function(
+  private Goal createGoal2() {
+    return new Goal(
         new Thing(new Text("thingName")),
         new GoalType("someGoal"),
-        new Text("anotherFunctionName"),
+        new Text("anotherGoalName"),
         new LinkedHashSet<>(),
         new ReturnValue(createIoModelPrimitive()));
   }
 
-  private Function createFunction3() {
-    return new Function(
+  private Goal createGoal3() {
+    return new Goal(
         new Thing(new Text("thingName")),
         new GoalType("someGoal"),
-        new Text("someAnotherNewFunctionName"),
+        new Text("someAnotherNewGoalName"),
         new LinkedHashSet<>(),
         new ReturnValue(createIoModelPrimitive()));
   }

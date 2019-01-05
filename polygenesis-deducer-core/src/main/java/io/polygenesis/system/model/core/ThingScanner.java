@@ -77,9 +77,9 @@ public class ThingScanner {
   }
 
   private Optional<Thing> identifyThingInMethod(Method method) {
-    GFunction annotationGFunction = AnnotationUtils.findAnnotation(method, GFunction.class);
-    if (annotationGFunction != null) {
-      Thing thing = new Thing(new Text(annotationGFunction.thingName()));
+    GGoal annotationGGoal = AnnotationUtils.findAnnotation(method, GGoal.class);
+    if (annotationGGoal != null) {
+      Thing thing = new Thing(new Text(annotationGGoal.thingName()));
       return Optional.of(thing);
     } else {
       return Optional.empty();

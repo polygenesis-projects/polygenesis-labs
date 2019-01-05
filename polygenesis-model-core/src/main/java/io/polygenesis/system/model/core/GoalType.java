@@ -26,10 +26,10 @@ import io.polygenesis.shared.valueobject.Text;
  * One of the most essential parts of PolyGenesis is the GoalType. Based on the GoalType, deducers
  * are able to instantiate the technology models.
  *
- * <p>It is highly preferable to use one of the constants provided at {@link GoalStandardType}, in
+ * <p>It is highly preferable to use one of the constants provided at {@link GGoalStandardType}, in
  * order to instantiate a GoalType.
  *
- * <p>For the rare cases that available types in {@link GoalStandardType} are not adequate to
+ * <p>For the rare cases that available types in {@link GGoalStandardType} are not adequate to
  * describe your goal, it is possible to pass any goal type as string.
  *
  * <p>Be aware though, that PolyGenesis will not be able to use your custom goal and it is your

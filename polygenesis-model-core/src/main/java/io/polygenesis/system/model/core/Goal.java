@@ -26,72 +26,72 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * In the context of automatic programming, Function is defined as an activity expressing what has
- * to be done, the {@link GoalType}, written by a programmer in a specific programming language to
- * or the purpose of a {@link Thing} characterized by a Name, and Properties provided as
- * activity&rsquo;s optional arguments and return value.
+ * In the context of automatic programming, Goal is defined as an activity expressing what has to be
+ * done, the {@link GoalType}, written by a programmer in a specific programming language to or the
+ * purpose of a {@link Thing} characterized by a Name, and Properties provided as activity&rsquo;s
+ * optional arguments and return value.
  *
  * @author Christos Tsakostas
  */
-public class Function {
+public class Goal {
 
-  /** The {@link Thing} the Function belongs to. */
+  /** The {@link Thing} the Goal belongs to. */
   private Thing thing;
 
-  /** The {@link GoalType} of the Function. */
+  /** The {@link GoalType} of the Goal. */
   private GoalType goalType;
 
   /**
-   * The name of the Function.
+   * The name of the Goal.
    *
    * <p>It will be used in code generation.
    */
   private Text name;
 
-  /** Optional return value of the Function. */
+  /** Optional return value of the Goal. */
   private ReturnValue returnValue;
 
-  /** Optional arguments of the Function. */
+  /** Optional arguments of the Goal. */
   private Set<Argument> arguments;
 
   // ===============================================================================================
   // CONSTRUCTOR(S)
   // ===============================================================================================
 
-  private Function(Thing thing, GoalType goalType, Text name) {
+  private Goal(Thing thing, GoalType goalType, Text name) {
     setThing(thing);
     setGoalType(goalType);
     setName(name);
   }
 
   /**
-   * Instantiates a new Function with ReturnValue.
+   * Instantiates a new Goal with ReturnValue.
    *
    * @param thing the thing
    * @param goalType the goalType
    * @param name the name
    * @param returnValue the return value
    */
-  public Function(Thing thing, GoalType goalType, Text name, ReturnValue returnValue) {
+  public Goal(Thing thing, GoalType goalType, Text name, ReturnValue returnValue) {
     this(thing, goalType, name);
     setReturnValue(returnValue);
   }
 
   /**
-   * Instantiates a new Function with Arguments.
+   * Instantiates a new Goal with Arguments.
    *
    * @param thing the thing
    * @param goalType the goalType
    * @param name the name
    * @param arguments the arguments
    */
-  public Function(Thing thing, GoalType goalType, Text name, Set<Argument> arguments) {
+  public Goal(Thing thing, GoalType goalType, Text name, Set<Argument> arguments) {
     this(thing, goalType, name);
     setArguments(arguments);
   }
 
   /**
-   * Instantiates a new Function with ReturnValue and Arguments.
+   * Instantiates a new Goal with ReturnValue and Arguments.
    *
    * @param thing the thing
    * @param goalType the goalType
@@ -99,7 +99,7 @@ public class Function {
    * @param arguments the arguments
    * @param returnValue the return value
    */
-  public Function(
+  public Goal(
       Thing thing, GoalType goalType, Text name, Set<Argument> arguments, ReturnValue returnValue) {
     this(thing, goalType, name, arguments);
     setReturnValue(returnValue);
@@ -192,14 +192,14 @@ public class Function {
       return false;
     }
 
-    Function function = (Function) o;
+    Goal goal = (Goal) o;
 
     return new EqualsBuilder()
-        .append(thing, function.thing)
-        .append(goalType, function.goalType)
-        .append(name, function.name)
-        .append(returnValue, function.returnValue)
-        .append(arguments, function.arguments)
+        .append(thing, goal.thing)
+        .append(goalType, goal.goalType)
+        .append(name, goal.name)
+        .append(returnValue, goal.returnValue)
+        .append(arguments, goal.arguments)
         .isEquals();
   }
 

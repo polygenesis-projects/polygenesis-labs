@@ -21,7 +21,7 @@
 package io.polygenesis.system;
 
 import io.polygenesis.shared.valueobject.Text;
-import io.polygenesis.system.model.core.Function;
+import io.polygenesis.system.model.core.Goal;
 import io.polygenesis.system.model.core.Thing;
 import java.util.Optional;
 import java.util.Set;
@@ -37,5 +37,5 @@ public interface CoreModelRepository extends ModelRepository {
 
   Optional<Thing> getThingByName(Text thingName);
 
-  Optional<Function> getThingFunction(Text thingName, Text functionName);
+  Optional<Goal> getThingGoal(Text thingName, Text goalName);
 }

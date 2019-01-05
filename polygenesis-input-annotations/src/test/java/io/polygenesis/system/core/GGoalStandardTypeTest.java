@@ -23,17 +23,17 @@ package io.polygenesis.system.core;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import io.polygenesis.system.model.core.GoalStandardType;
+import io.polygenesis.system.model.core.GGoalStandardType;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import org.junit.Test;
 
 /** @author Christos Tsakostas */
-public class GoalStandardTypeTest {
+public class GGoalStandardTypeTest {
 
   @Test
   public void shouldFailToInstantiate() throws NoSuchMethodException {
-    Constructor<GoalStandardType> constructor = GoalStandardType.class.getDeclaredConstructor();
+    Constructor<GGoalStandardType> constructor = GGoalStandardType.class.getDeclaredConstructor();
     constructor.setAccessible(true);
 
     assertThatThrownBy(() -> constructor.newInstance())
@@ -42,14 +42,14 @@ public class GoalStandardTypeTest {
 
   @Test
   public void shouldSucceed() {
-    assertThat(GoalStandardType.CMD_CREATE).isEqualTo("CREATE");
-    assertThat(GoalStandardType.CMD_UPDATE).isEqualTo("UPDATE");
-    assertThat(GoalStandardType.CMD_DELETE).isEqualTo("DELETE");
-    assertThat(GoalStandardType.CMD_RESET).isEqualTo("RESET");
+    assertThat(GGoalStandardType.CMD_CREATE).isEqualTo("CREATE");
+    assertThat(GGoalStandardType.CMD_UPDATE).isEqualTo("UPDATE");
+    assertThat(GGoalStandardType.CMD_DELETE).isEqualTo("DELETE");
+    assertThat(GGoalStandardType.CMD_RESET).isEqualTo("RESET");
 
-    assertThat(GoalStandardType.QRY_DETAIL).isEqualTo("DETAIL");
-    assertThat(GoalStandardType.QRY_COLLECTION).isEqualTo("COLLECTION");
-    assertThat(GoalStandardType.QRY_VALIDATION).isEqualTo("VALIDATION");
-    assertThat(GoalStandardType.QRY_CALCULATION).isEqualTo("CALCULATION");
+    assertThat(GGoalStandardType.QRY_DETAIL).isEqualTo("DETAIL");
+    assertThat(GGoalStandardType.QRY_COLLECTION).isEqualTo("COLLECTION");
+    assertThat(GGoalStandardType.QRY_VALIDATION).isEqualTo("VALIDATION");
+    assertThat(GGoalStandardType.QRY_CALCULATION).isEqualTo("CALCULATION");
   }
 }

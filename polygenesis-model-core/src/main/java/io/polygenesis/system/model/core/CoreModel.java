@@ -45,7 +45,7 @@ public class CoreModel implements Model<CoreModelRepository> {
   public String description() {
     StringBuilder strBuilder = new StringBuilder();
     strBuilder.append("Core model is the most essential component of PolyGenesis. Things, ");
-    strBuilder.append("Functions and Goals are defined here. Deducers use this information, ");
+    strBuilder.append("Goals are defined here. Deducers use this information, ");
     strBuilder.append("in order to populate the TechnologyModels");
     return strBuilder.toString();
   }

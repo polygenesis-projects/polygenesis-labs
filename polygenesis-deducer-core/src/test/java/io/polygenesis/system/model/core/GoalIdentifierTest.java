@@ -34,10 +34,10 @@ import java.util.Set;
 import org.junit.Test;
 
 /** @author Christos Tsakostas */
-public class FunctionIdentifierTest {
+public class GoalIdentifierTest {
 
   @Test
-  public void shouldReturnOneFunctionWithCustomName() {
+  public void shouldReturnOneGoalWithCustomName() {
     MethodAnalyzer methodAnalyzer = mock(MethodAnalyzer.class);
     RecursiveObjectFiller recursiveObjectFiller = mock(RecursiveObjectFiller.class);
     IoModelDeducer ioModelDeducer = mock(IoModelDeducer.class);
@@ -48,22 +48,22 @@ public class FunctionIdentifierTest {
     Set<Class<?>> classes = new LinkedHashSet<>();
     classes.add(AnnotatedInterface.class);
 
-    FunctionIdentifier functionIdentifier =
-        new FunctionIdentifier(methodAnalyzer, recursiveObjectFiller, ioModelDeducer);
+    GoalIdentifier goalIdentifier =
+        new GoalIdentifier(methodAnalyzer, recursiveObjectFiller, ioModelDeducer);
 
     given(methodAnalyzer.getMethodOutput(any(Method.class))).willReturn(methodOutputDescriptor);
 
-    Set<Function> functions = functionIdentifier.identifyFunctionsOf(thing, classes);
-    assertThat(functions.isEmpty()).isFalse();
+    Set<Goal> goals = goalIdentifier.identifyGoalsOf(thing, classes);
+    assertThat(goals.isEmpty()).isFalse();
 
-    functions
+    goals
         .stream()
         .findFirst()
         .ifPresent(func -> assertThat(func.getName().getOriginal()).isEqualTo("someCustomName"));
   }
 
   @Test
-  public void shouldReturnOptionalOfEmptyIfAnnotationGFunctionIsNotPresent() {
+  public void shouldReturnOptionalOfEmptyIfAnnotationPGGoalIsNotPresent() {
     MethodAnalyzer methodAnalyzer = mock(MethodAnalyzer.class);
     RecursiveObjectFiller recursiveObjectFiller = mock(RecursiveObjectFiller.class);
     IoModelDeducer ioModelDeducer = mock(IoModelDeducer.class);
@@ -71,14 +71,14 @@ public class FunctionIdentifierTest {
     Set<Class<?>> classes = new LinkedHashSet<>();
     classes.add(NotAnnotatedInterface.class);
 
-    FunctionIdentifier functionIdentifier =
-        new FunctionIdentifier(methodAnalyzer, recursiveObjectFiller, ioModelDeducer);
+    GoalIdentifier goalIdentifier =
+        new GoalIdentifier(methodAnalyzer, recursiveObjectFiller, ioModelDeducer);
 
-    assertThat(functionIdentifier.identifyFunctionsOf(thing, classes).isEmpty()).isTrue();
+    assertThat(goalIdentifier.identifyGoalsOf(thing, classes).isEmpty()).isTrue();
   }
 
   @Test
-  public void shouldReturnOptionalOfEmptyIfAnnotationGFunctionRefersToAnotherThing() {
+  public void shouldReturnOptionalOfEmptyIfAnnotationPGGoalRefersToAnotherThing() {
     MethodAnalyzer methodAnalyzer = mock(MethodAnalyzer.class);
     RecursiveObjectFiller recursiveObjectFiller = mock(RecursiveObjectFiller.class);
     IoModelDeducer ioModelDeducer = mock(IoModelDeducer.class);
@@ -86,9 +86,9 @@ public class FunctionIdentifierTest {
     Set<Class<?>> classes = new LinkedHashSet<>();
     classes.add(AnnotatedInterface.class);
 
-    FunctionIdentifier functionIdentifier =
-        new FunctionIdentifier(methodAnalyzer, recursiveObjectFiller, ioModelDeducer);
+    GoalIdentifier goalIdentifier =
+        new GoalIdentifier(methodAnalyzer, recursiveObjectFiller, ioModelDeducer);
 
-    assertThat(functionIdentifier.identifyFunctionsOf(thing, classes).isEmpty()).isTrue();
+    assertThat(goalIdentifier.identifyGoalsOf(thing, classes).isEmpty()).isTrue();
   }
 }

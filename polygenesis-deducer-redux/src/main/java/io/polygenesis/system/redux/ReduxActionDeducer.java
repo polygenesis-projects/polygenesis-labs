@@ -20,8 +20,8 @@
 
 package io.polygenesis.system.redux;
 
-import io.polygenesis.system.model.core.Function;
-import io.polygenesis.system.model.core.GoalStandardType;
+import io.polygenesis.system.model.core.GGoalStandardType;
+import io.polygenesis.system.model.core.Goal;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -53,10 +53,10 @@ public class ReduxActionDeducer {
   /**
    * Deduce set.
    *
-   * @param function the function
+   * @param goal the goal
    * @return the set
    */
-  public Set<Action> deduce(Function function) {
+  public Set<Action> deduce(Goal goal) {
     Set<Action> actions = new LinkedHashSet<>();
 
     return actions;
@@ -67,7 +67,7 @@ public class ReduxActionDeducer {
   // ===============================================================================================
   private static void initializeGoalToActionTypeMap() {
     goalToActionTypeMap.put(
-        GoalStandardType.CMD_CREATE,
+        GGoalStandardType.CMD_CREATE,
         new LinkedHashSet<>(
             Arrays.asList(ActionType.SUBMIT, ActionType.ON_SUCCESS, ActionType.ON_FAILURE)));
   }

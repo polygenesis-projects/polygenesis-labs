@@ -25,7 +25,7 @@ import io.polygenesis.system.model.core.ClassScanner;
 import io.polygenesis.system.model.core.CoreDeducer;
 import io.polygenesis.system.model.core.DataTypeConverter;
 import io.polygenesis.system.model.core.FieldsInInterfaceMethodAnalyzer;
-import io.polygenesis.system.model.core.FunctionIdentifier;
+import io.polygenesis.system.model.core.GoalIdentifier;
 import io.polygenesis.system.model.core.IoModelDeducer;
 import io.polygenesis.system.model.core.MethodAnalyzer;
 import io.polygenesis.system.model.core.RecursiveObjectFiller;
@@ -54,7 +54,7 @@ final class ServiceRegistry {
   private static RecursiveObjectFiller recursiveObjectFiller;
   private static DataTypeConverter dataTypeConverter;
   private static IoModelDeducer ioModelDeducer;
-  private static FunctionIdentifier functionIdentifier;
+  private static GoalIdentifier goalIdentifier;
   private static CoreDeducer coreDeducer;
 
   // REDUX
@@ -79,10 +79,9 @@ final class ServiceRegistry {
 
     ioModelDeducer = new IoModelDeducer(dataTypeConverter);
 
-    functionIdentifier =
-        new FunctionIdentifier(methodAnalyzer, recursiveObjectFiller, ioModelDeducer);
+    goalIdentifier = new GoalIdentifier(methodAnalyzer, recursiveObjectFiller, ioModelDeducer);
 
-    coreDeducer = new AnnotationsCoreDeducerImpl(classScanner, thingScanner, functionIdentifier);
+    coreDeducer = new AnnotationsCoreDeducerImpl(classScanner, thingScanner, goalIdentifier);
 
     // REDUX
     reduxStoreDeducer = new ReduxStoreDeducer();

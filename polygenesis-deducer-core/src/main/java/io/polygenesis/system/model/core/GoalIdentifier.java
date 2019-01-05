@@ -32,13 +32,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.AnnotationUtils;
 
 /**
- * Identifies functions of things in provided classes.
+ * Identifies goals of things in provided classes.
  *
  * @author Christos Tsakostas
  */
-public class FunctionIdentifier {
+public class GoalIdentifier {
 
-  private static final Logger LOG = LoggerFactory.getLogger(FunctionIdentifier.class);
+  private static final Logger LOG = LoggerFactory.getLogger(GoalIdentifier.class);
 
   private final MethodAnalyzer methodAnalyzer;
   private final RecursiveObjectFiller recursiveObjectFiller;
@@ -49,13 +49,13 @@ public class FunctionIdentifier {
   // ===============================================================================================
 
   /**
-   * Instantiates a new Function identifier.
+   * Instantiates a new Goal identifier.
    *
    * @param methodAnalyzer the method analyzer
    * @param recursiveObjectFiller the recursive object filler
    * @param ioModelDeducer the io model deducer
    */
-  public FunctionIdentifier(
+  public GoalIdentifier(
       MethodAnalyzer methodAnalyzer,
       RecursiveObjectFiller recursiveObjectFiller,
       IoModelDeducer ioModelDeducer) {
@@ -69,45 +69,45 @@ public class FunctionIdentifier {
   // ===============================================================================================
 
   /**
-   * Identify functions of set.
+   * Identify goals of set.
    *
    * @param thing the thing
    * @param classes the classes
    * @return the set
    */
-  Set<Function> identifyFunctionsOf(Thing thing, Set<Class<?>> classes) {
-    Set<Function> functions = new LinkedHashSet<>();
+  Set<Goal> identifyGoalsOf(Thing thing, Set<Class<?>> classes) {
+    Set<Goal> goals = new LinkedHashSet<>();
 
-    classes.forEach(clazz -> functions.addAll(identifyFunctionsOf(thing, clazz)));
+    classes.forEach(clazz -> goals.addAll(identifyGoalsOf(thing, clazz)));
 
-    return functions;
+    return goals;
   }
 
   // ===============================================================================================
   // PRIVATE
   // ===============================================================================================
 
-  private Set<Function> identifyFunctionsOf(Thing thing, Class<?> clazz) {
-    Set<Function> functions = new LinkedHashSet<>();
+  private Set<Goal> identifyGoalsOf(Thing thing, Class<?> clazz) {
+    Set<Goal> goals = new LinkedHashSet<>();
 
     Stream.of(clazz.getMethods())
         .forEach(
             method -> {
-              Optional<Function> optionalFunction = this.identifyFunctionInMethod(thing, method);
-              optionalFunction.ifPresent(functions::add);
+              Optional<Goal> optionalGoal = this.identifyGoalInMethod(thing, method);
+              optionalGoal.ifPresent(goals::add);
             });
 
-    return functions;
+    return goals;
   }
 
-  private Optional<Function> identifyFunctionInMethod(Thing thing, Method method) {
-    GFunction annotationGFunction = AnnotationUtils.findAnnotation(method, GFunction.class);
-    if (annotationGFunction != null) {
-      Thing thingToExamine = new Thing(new Text(annotationGFunction.thingName()));
+  private Optional<Goal> identifyGoalInMethod(Thing thing, Method method) {
+    GGoal annotationGGoal = AnnotationUtils.findAnnotation(method, GGoal.class);
+    if (annotationGGoal != null) {
+      Thing thingToExamine = new Thing(new Text(annotationGGoal.thingName()));
 
       if (thing.equals(thingToExamine)) {
 
-        GoalType goalType = new GoalType(annotationGFunction.goal());
+        GoalType goalType = new GoalType(annotationGGoal.goal());
 
         // =========================================================================================
         // METHOD OUTPUT
@@ -146,11 +146,10 @@ public class FunctionIdentifier {
           arguments.add(new Argument(ioModelDeducer.deduceResponse(input)));
         }
 
-        Function function =
-            new Function(
-                thing, goalType, identifyName(annotationGFunction), arguments, returnValue);
+        Goal goal =
+            new Goal(thing, goalType, identifyName(annotationGGoal), arguments, returnValue);
 
-        return Optional.of(function);
+        return Optional.of(goal);
       } else {
         return Optional.empty();
       }
@@ -162,16 +161,16 @@ public class FunctionIdentifier {
   /**
    * Identify name.
    *
-   * @param annotationGFunction the annotation {@link GFunction}
+   * @param annotationGGoal the annotation {@link GGoal}
    * @return the name as {@link Text}
    */
-  private Text identifyName(GFunction annotationGFunction) {
-    String name = annotationGFunction.name();
+  private Text identifyName(GGoal annotationGGoal) {
+    String name = annotationGGoal.name();
 
     if (name.equals("")) {
       return new Text(
-          new Text(annotationGFunction.goal()).getLowerCamel()
-              + new Text(annotationGFunction.thingName()).getUpperCamel());
+          new Text(annotationGGoal.goal()).getLowerCamel()
+              + new Text(annotationGGoal.thingName()).getUpperCamel());
     }
 
     return new Text(name);

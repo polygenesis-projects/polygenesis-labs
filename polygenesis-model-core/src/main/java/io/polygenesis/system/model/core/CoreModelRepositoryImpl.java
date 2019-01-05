@@ -65,23 +65,19 @@ public class CoreModelRepositoryImpl implements CoreModelRepository {
   }
 
   /**
-   * Gets thing function.
+   * Gets thing goal.
    *
    * @param thingName the thing name
-   * @param functionName the function name
-   * @return the thing function
+   * @param goalName the goal name
+   * @return the thing goal
    */
   @Override
-  public Optional<Function> getThingFunction(Text thingName, Text functionName) {
+  public Optional<Goal> getThingGoal(Text thingName, Text goalName) {
     Optional<Thing> optionalThing = getThingByName(thingName);
 
     return optionalThing.flatMap(
         thing ->
-            thing
-                .getFunctions()
-                .stream()
-                .filter(function -> function.getName().equals(functionName))
-                .findFirst());
+            thing.getGoals().stream().filter(goal -> goal.getName().equals(goalName)).findFirst());
   }
 
   // ===============================================================================================

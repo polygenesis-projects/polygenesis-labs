@@ -28,44 +28,44 @@ import java.util.LinkedHashSet;
 import org.junit.Test;
 
 /** @author Christos Tsakostas */
-public class FunctionTest {
+public class GoalTest {
 
   @Test
-  public void shouldCreateFunction() {
-    Function function1 = createFunction1();
+  public void shouldcreateGoal() {
+    Goal goal1 = createGoal1();
 
-    assertThat(function1).isNotNull();
-    assertThat(function1.getThing()).isNotNull();
-    assertThat(function1.getGoalType()).isNotNull();
-    assertThat(function1.getName()).isNotNull();
-    assertThat(function1.getReturnValue()).isNotNull();
-    assertThat(function1.getArguments()).isNotNull();
+    assertThat(goal1).isNotNull();
+    assertThat(goal1.getThing()).isNotNull();
+    assertThat(goal1.getGoalType()).isNotNull();
+    assertThat(goal1.getName()).isNotNull();
+    assertThat(goal1.getReturnValue()).isNotNull();
+    assertThat(goal1.getArguments()).isNotNull();
   }
 
   @Test
-  public void shouldCreateFunctionWithReturnValue() {
-    Function function1 = createFunctionWithReturnValueAndNoArguments();
+  public void shouldcreateGoalWithReturnValue() {
+    Goal goal1 = createGoalWithReturnValueAndNoArguments();
 
-    assertThat(function1).isNotNull();
-    assertThat(function1.getThing()).isNotNull();
-    assertThat(function1.getGoalType()).isNotNull();
-    assertThat(function1.getName()).isNotNull();
-    assertThat(function1.getReturnValue()).isNotNull();
+    assertThat(goal1).isNotNull();
+    assertThat(goal1.getThing()).isNotNull();
+    assertThat(goal1.getGoalType()).isNotNull();
+    assertThat(goal1.getName()).isNotNull();
+    assertThat(goal1.getReturnValue()).isNotNull();
 
-    assertThat(function1.getArguments()).isNull();
+    assertThat(goal1.getArguments()).isNull();
   }
 
   @Test
-  public void shouldCreateFunctionWithArguments() {
-    Function function1 = createFunctionWithArgumentsAndNoReturnValue();
+  public void shouldcreateGoalWithArguments() {
+    Goal goal1 = createGoalWithArgumentsAndNoReturnValue();
 
-    assertThat(function1).isNotNull();
-    assertThat(function1.getThing()).isNotNull();
-    assertThat(function1.getGoalType()).isNotNull();
-    assertThat(function1.getName()).isNotNull();
-    assertThat(function1.getArguments()).isNotNull();
+    assertThat(goal1).isNotNull();
+    assertThat(goal1.getThing()).isNotNull();
+    assertThat(goal1.getGoalType()).isNotNull();
+    assertThat(goal1.getName()).isNotNull();
+    assertThat(goal1.getArguments()).isNotNull();
 
-    assertThat(function1.getReturnValue()).isNull();
+    assertThat(goal1.getReturnValue()).isNull();
   }
 
   // ===============================================================================================
@@ -73,84 +73,84 @@ public class FunctionTest {
   // ===============================================================================================
   @Test
   public void equalityShouldSucceedForTwoEqualObjects() {
-    Function function1 = createFunction1();
-    Function function2 = createFunction1();
+    Goal goal1 = createGoal1();
+    Goal goal2 = createGoal1();
 
-    assertThat(function1.equals(function2)).isTrue();
+    assertThat(goal1.equals(goal2)).isTrue();
   }
 
   @Test
   public void equalityShouldSucceedForSameObject() {
-    Function function1 = createFunction1();
+    Goal goal1 = createGoal1();
 
-    assertThat(function1.equals(function1)).isTrue();
+    assertThat(goal1.equals(goal1)).isTrue();
   }
 
   @Test
   public void equalityShouldFailForNotEqualObjects() {
-    Function function1 = createFunction1();
-    Function function2 = createFunction2();
+    Goal goal1 = createGoal1();
+    Goal goal2 = createGoal2();
 
-    assertThat(function1.equals(function2)).isFalse();
+    assertThat(goal1.equals(goal2)).isFalse();
   }
 
   @Test
   public void equalityShouldFailForNullInput() {
-    Function function1 = createFunction1();
+    Goal goal1 = createGoal1();
 
-    assertThat(function1.equals(null)).isFalse();
+    assertThat(goal1.equals(null)).isFalse();
   }
 
   @Test
   public void equalityShouldFailForDifferentObject() {
-    Function function1 = createFunction1();
+    Goal goal1 = createGoal1();
     Object object = new Object();
 
-    assertThat(function1.equals(object)).isFalse();
+    assertThat(goal1.equals(object)).isFalse();
   }
 
   @Test
   public void hashCodeShouldNotBeNull() {
-    Function function1 = createFunction1();
+    Goal goal1 = createGoal1();
 
-    assertThat(function1.hashCode()).isNotNull();
+    assertThat(goal1.hashCode()).isNotNull();
   }
 
   // ===============================================================================================
-  // Create Functions
+  // Create Goals
   // ===============================================================================================
 
-  private Function createFunction1() {
-    return new Function(
+  private Goal createGoal1() {
+    return new Goal(
         new Thing(new Text("thingName")),
         new GoalType("someGoal"),
-        new Text("functionName"),
+        new Text("goalName"),
         new LinkedHashSet<>(),
         new ReturnValue(createIoModelPrimitive()));
   }
 
-  private Function createFunction2() {
-    return new Function(
+  private Goal createGoal2() {
+    return new Goal(
         new Thing(new Text("thingName")),
         new GoalType("someGoal"),
-        new Text("anotherFunctionName"),
+        new Text("anotherGoalName"),
         new LinkedHashSet<>(),
         new ReturnValue(createIoModelPrimitive()));
   }
 
-  private Function createFunctionWithReturnValueAndNoArguments() {
-    return new Function(
+  private Goal createGoalWithReturnValueAndNoArguments() {
+    return new Goal(
         new Thing(new Text("thingName")),
         new GoalType("someGoal"),
-        new Text("functionName"),
+        new Text("goalName"),
         new ReturnValue(createIoModelPrimitive()));
   }
 
-  private Function createFunctionWithArgumentsAndNoReturnValue() {
-    return new Function(
+  private Goal createGoalWithArgumentsAndNoReturnValue() {
+    return new Goal(
         new Thing(new Text("thingName")),
         new GoalType("someGoal"),
-        new Text("functionName"),
+        new Text("goalName"),
         new LinkedHashSet<>());
   }
 

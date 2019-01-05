@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface GFunction {
+public @interface GGoal {
 
   /**
    * Name.
@@ -42,7 +42,9 @@ public @interface GFunction {
   String name() default "";
 
   /**
-   * The goal of the function. e.g. create, collection, etc.
+   * The goal type of a method. e.g. create, collection, etc.
+   *
+   * <p>Struggle to use one of the values provided at {@link GGoalStandardType}.
    *
    * @return the string
    */

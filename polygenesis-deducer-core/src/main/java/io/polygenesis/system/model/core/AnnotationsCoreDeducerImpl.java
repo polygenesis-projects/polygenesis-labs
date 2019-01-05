@@ -34,7 +34,7 @@ public class AnnotationsCoreDeducerImpl implements CoreDeducer {
 
   private final ClassScanner classScanner;
   private final ThingScanner thingScanner;
-  private final FunctionIdentifier functionIdentifier;
+  private final GoalIdentifier goalIdentifier;
 
   // ===============================================================================================
   // CONSTRUCTOR(S)
@@ -45,13 +45,13 @@ public class AnnotationsCoreDeducerImpl implements CoreDeducer {
    *
    * @param classScanner the class scanner
    * @param thingScanner the thing scanner
-   * @param functionIdentifier the function identifier
+   * @param goalIdentifier the goal identifier
    */
   public AnnotationsCoreDeducerImpl(
-      ClassScanner classScanner, ThingScanner thingScanner, FunctionIdentifier functionIdentifier) {
+      ClassScanner classScanner, ThingScanner thingScanner, GoalIdentifier goalIdentifier) {
     this.classScanner = classScanner;
     this.thingScanner = thingScanner;
-    this.functionIdentifier = functionIdentifier;
+    this.goalIdentifier = goalIdentifier;
   }
 
   // ===============================================================================================
@@ -67,8 +67,7 @@ public class AnnotationsCoreDeducerImpl implements CoreDeducer {
 
     Set<Thing> things = thingScanner.identifyThingsInInterfaces(classes);
 
-    things.forEach(
-        thing -> thing.appendFunctions(functionIdentifier.identifyFunctionsOf(thing, classes)));
+    things.forEach(thing -> thing.appendGoals(goalIdentifier.identifyGoalsOf(thing, classes)));
 
     return new CoreModelRepositoryImpl(things);
   }

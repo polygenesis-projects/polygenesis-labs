@@ -20,14 +20,14 @@
 
 package io.polygenesis.system.model.core.sample;
 
-import io.polygenesis.system.model.core.GFunction;
-import io.polygenesis.system.model.core.GoalStandardType;
+import io.polygenesis.system.model.core.GGoal;
+import io.polygenesis.system.model.core.GGoalStandardType;
 
 /** @author Christos Tsakostas */
 public interface AnnotatedInterface {
 
-  @GFunction(
-      goal = GoalStandardType.QRY_CALCULATION,
+  @GGoal(
+      goal = GGoalStandardType.QRY_CALCULATION,
       thingName = "someFancyThing",
       name = "someCustomName")
   void someAnnotatedMethod();

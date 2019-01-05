@@ -41,7 +41,7 @@ public class AnnotationsCoreDeducerImplTest {
   private RecursiveObjectFiller recursiveObjectFiller;
   private DataTypeConverter dataTypeConverter;
   private IoModelDeducer ioModelDeducer;
-  private FunctionIdentifier functionIdentifier;
+  private GoalIdentifier goalIdentifier;
   private CoreDeducer coreDeducer;
   private CoreModelRepository repository;
 
@@ -56,9 +56,8 @@ public class AnnotationsCoreDeducerImplTest {
         new RecursiveObjectFiller(typesAnalyzer, fieldsInInterfaceMethodAnalyzer);
     dataTypeConverter = new DataTypeConverter();
     ioModelDeducer = new IoModelDeducer(dataTypeConverter);
-    functionIdentifier =
-        new FunctionIdentifier(methodAnalyzer, recursiveObjectFiller, ioModelDeducer);
-    coreDeducer = new AnnotationsCoreDeducerImpl(classScanner, thingScanner, functionIdentifier);
+    goalIdentifier = new GoalIdentifier(methodAnalyzer, recursiveObjectFiller, ioModelDeducer);
+    coreDeducer = new AnnotationsCoreDeducerImpl(classScanner, thingScanner, goalIdentifier);
   }
 
   @Test
@@ -92,25 +91,25 @@ public class AnnotationsCoreDeducerImplTest {
 
     Thing someThing = optionalSomeThing.get();
 
-    assertThat(someThing.getFunctions().size()).isEqualTo(7);
+    assertThat(someThing.getGoals().size()).isEqualTo(7);
 
-    assertionsForFunctionCalculation(someThing);
+    assertionsForGoalCalculation(someThing);
   }
 
   // ===============================================================================================
   // ASSERTIONS FOR THING METHOD: ADD / CALCULATION
   // ===============================================================================================
-  private void assertionsForFunctionCalculation(Thing someThing) {
-    Optional<Function> optionalFunctionCalculation =
-        repository.getThingFunction(someThing.getName(), new Text("calculationSomeThing"));
+  private void assertionsForGoalCalculation(Thing someThing) {
+    Optional<Goal> optionalGoalCalculation =
+        repository.getThingGoal(someThing.getName(), new Text("calculationSomeThing"));
 
-    if (!optionalFunctionCalculation.isPresent()) {
+    if (!optionalGoalCalculation.isPresent()) {
       throw new IllegalStateException();
     }
 
-    Function functionCalculation = optionalFunctionCalculation.get();
+    Goal goalCalculation = optionalGoalCalculation.get();
 
-    assertThat(functionCalculation.getReturnValue()).isNotNull();
-    assertThat(functionCalculation.getArguments().size()).isEqualTo(2);
+    assertThat(goalCalculation.getReturnValue()).isNotNull();
+    assertThat(goalCalculation.getArguments().size()).isEqualTo(2);
   }
 }

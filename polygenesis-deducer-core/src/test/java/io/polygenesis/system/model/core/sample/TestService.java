@@ -20,8 +20,8 @@
 
 package io.polygenesis.system.model.core.sample;
 
-import io.polygenesis.system.model.core.GFunction;
-import io.polygenesis.system.model.core.GoalStandardType;
+import io.polygenesis.system.model.core.GGoal;
+import io.polygenesis.system.model.core.GGoalStandardType;
 import java.util.List;
 import org.springframework.data.domain.Page;
 
@@ -30,24 +30,24 @@ public interface TestService {
 
   String THING_NAME = "someThing";
 
-  @GFunction(goal = GoalStandardType.QRY_CALCULATION, thingName = THING_NAME)
+  @GGoal(goal = GGoalStandardType.QRY_CALCULATION, thingName = THING_NAME)
   int add(int a, int b);
 
-  @GFunction(goal = GoalStandardType.QRY_COLLECTION, thingName = THING_NAME)
+  @GGoal(goal = GGoalStandardType.QRY_COLLECTION, thingName = THING_NAME)
   List<String> getListOfString(String input);
 
-  @GFunction(goal = GoalStandardType.QRY_COLLECTION, thingName = THING_NAME)
+  @GGoal(goal = GGoalStandardType.QRY_COLLECTION, thingName = THING_NAME)
   void passListOfString(List<String> input);
 
-  @GFunction(goal = GoalStandardType.QRY_COLLECTION, thingName = THING_NAME)
+  @GGoal(goal = GGoalStandardType.QRY_COLLECTION, thingName = THING_NAME)
   List<CollectionDto> getListOfCollectionDto(String input);
 
-  @GFunction(goal = GoalStandardType.QRY_COLLECTION, thingName = THING_NAME)
+  @GGoal(goal = GGoalStandardType.QRY_COLLECTION, thingName = THING_NAME)
   Page<CollectionDto> getSpringPageCollectionDto(String input);
 
-  @GFunction(goal = GoalStandardType.QRY_COLLECTION, thingName = THING_NAME)
+  @GGoal(goal = GGoalStandardType.QRY_COLLECTION, thingName = THING_NAME)
   CollectionApiPageResponse getCollectionApiPageResponse(CollectionApiPageRequest request);
 
-  @GFunction(goal = GoalStandardType.CMD_CREATE, thingName = THING_NAME)
+  @GGoal(goal = GGoalStandardType.CMD_CREATE, thingName = THING_NAME)
   CreateResponse create(CreateRequest request);
 }

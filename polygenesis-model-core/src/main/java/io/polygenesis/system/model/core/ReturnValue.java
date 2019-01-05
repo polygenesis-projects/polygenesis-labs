@@ -23,7 +23,7 @@ package io.polygenesis.system.model.core;
 import io.polygenesis.system.model.core.iomodel.IoModel;
 
 /**
- * Denotes an Return Value of a {@link Function}.
+ * Denotes an Return Value of a {@link Goal}.
  *
  * @author Christos Tsakostas
  */

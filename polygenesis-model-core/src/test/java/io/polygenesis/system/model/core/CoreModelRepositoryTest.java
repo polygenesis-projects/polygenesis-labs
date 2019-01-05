@@ -47,29 +47,27 @@ public class CoreModelRepositoryTest {
   }
 
   @Test
-  public void shouldSucceedToGetThingFunction() {
+  public void shouldSucceedToGetThingGoal() {
     CoreModelRepository repository = new CoreModelRepositoryImpl(createThings());
 
-    assertThat(repository.getThingFunction(new Text("someThing"), new Text("someFunction")))
-        .isPresent();
+    assertThat(repository.getThingGoal(new Text("someThing"), new Text("someGoal"))).isPresent();
   }
 
   @Test
-  public void shouldFailToGetThingFunction() {
+  public void shouldFailToGetThingGoal() {
     CoreModelRepository repository = new CoreModelRepositoryImpl(createThings());
 
-    assertThat(
-            repository.getThingFunction(new Text("someThing"), new Text("someNonExistingFunction")))
+    assertThat(repository.getThingGoal(new Text("someThing"), new Text("someNonExistingGoal")))
         .isEmpty();
   }
 
   @Test
-  public void shouldFailToGetThingFunctionForNonExistingThing() {
+  public void shouldFailToGetThingGoalForNonExistingThing() {
     CoreModelRepository repository = new CoreModelRepositoryImpl(createThings());
 
     assertThat(
-            repository.getThingFunction(
-                new Text("someNonExistingThing"), new Text("someNonExistingFunction")))
+            repository.getThingGoal(
+                new Text("someNonExistingThing"), new Text("someNonExistingGoal")))
         .isEmpty();
   }
 
@@ -78,11 +76,10 @@ public class CoreModelRepositoryTest {
 
     Thing someThing = new Thing(new Text("someThing"));
 
-    Function someFunction =
-        new Function(
-            someThing, new GoalType("someGoal"), new Text("someFunction"), new LinkedHashSet<>());
+    Goal someGoal =
+        new Goal(someThing, new GoalType("someGoal"), new Text("someGoal"), new LinkedHashSet<>());
 
-    someThing.appendFunction(someFunction);
+    someThing.appendGoal(someGoal);
 
     things.add(someThing);
     return things;

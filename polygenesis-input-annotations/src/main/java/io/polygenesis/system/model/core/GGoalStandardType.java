@@ -30,9 +30,9 @@ package io.polygenesis.system.model.core;
  *
  * @author Christos Tsakostas
  */
-public final class GoalStandardType {
+public final class GGoalStandardType {
 
-  private GoalStandardType() {
+  private GGoalStandardType() {
     throw new IllegalStateException("Utility class");
   }
 

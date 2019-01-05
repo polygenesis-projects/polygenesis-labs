@@ -47,7 +47,7 @@ public class Thing {
   /** Optionally a {@link Thing} may be the child of another {@link Thing} acting as the parent. */
   private Thing parent;
 
-  private Set<Function> functions;
+  private Set<Goal> goals;
 
   // ===============================================================================================
   // CONSTRUCTOR(S)
@@ -60,7 +60,7 @@ public class Thing {
    */
   public Thing(Text thingName) {
     setName(thingName);
-    setFunctions(new LinkedHashSet<>());
+    setGoals(new LinkedHashSet<>());
   }
 
   /**
@@ -72,7 +72,7 @@ public class Thing {
   public Thing(Text thingName, Thing parentThing) {
     setName(thingName);
     setParent(parentThing);
-    setFunctions(new LinkedHashSet<>());
+    setGoals(new LinkedHashSet<>());
   }
 
   // ===============================================================================================
@@ -80,21 +80,21 @@ public class Thing {
   // ===============================================================================================
 
   /**
-   * Append function.
+   * Append goal.
    *
-   * @param function the function
+   * @param goal the goal
    */
-  void appendFunction(Function function) {
-    this.functions.add(function);
+  void appendGoal(Goal goal) {
+    this.goals.add(goal);
   }
 
   /**
-   * Append functions.
+   * Append goals.
    *
-   * @param functions the functions
+   * @param goals the goals
    */
-  void appendFunctions(Set<Function> functions) {
-    this.functions.addAll(functions);
+  void appendGoals(Set<Goal> goals) {
+    this.goals.addAll(goals);
   }
 
   // ===============================================================================================
@@ -120,12 +120,12 @@ public class Thing {
   }
 
   /**
-   * Gets functions.
+   * Gets goals.
    *
-   * @return the functions
+   * @return the goals
    */
-  Set<Function> getFunctions() {
-    return functions;
+  Set<Goal> getGoals() {
+    return goals;
   }
 
   // ===============================================================================================
@@ -140,8 +140,8 @@ public class Thing {
     this.parent = parent;
   }
 
-  private void setFunctions(Set<Function> functions) {
-    this.functions = functions;
+  private void setGoals(Set<Goal> goals) {
+    this.goals = goals;
   }
 
   // ===============================================================================================

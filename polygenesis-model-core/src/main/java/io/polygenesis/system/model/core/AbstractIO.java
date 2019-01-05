@@ -25,7 +25,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * The base class for Function Input and Output.
+ * The base class for Goal Input and Output.
  *
  * @author Christos Tsakostas
  */
