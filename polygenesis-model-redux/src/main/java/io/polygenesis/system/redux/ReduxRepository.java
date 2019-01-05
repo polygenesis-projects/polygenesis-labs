@@ -21,6 +21,7 @@
 package io.polygenesis.system.redux;
 
 import io.polygenesis.shared.assertion.Assertion;
+import io.polygenesis.system.ModelRepository;
 import java.util.Set;
 
 /**
@@ -28,7 +29,7 @@ import java.util.Set;
  *
  * @author Christos Tsakostas
  */
-public class ReduxRepository {
+public class ReduxRepository implements ModelRepository {
 
   private Set<Store> stores;
 

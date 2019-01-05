@@ -158,7 +158,7 @@ public class Creator {
   // ===============================================================================================
 
   private CoreDeducerRequest makeCoreDeducerRequest(CreatorRequest request) {
-    if (request.getInterfacesExcluded().isEmpty() && request.getInterfacesExcluded().isEmpty()) {
+    if (request.getInterfacesIncluded().isEmpty() && request.getInterfacesExcluded().isEmpty()) {
       return new CoreDeducerRequest(request.getPackagesToScan());
     } else {
       throw new UnsupportedOperationException();

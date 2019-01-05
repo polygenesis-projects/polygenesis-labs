@@ -49,7 +49,7 @@ public class CreatorRequest {
   public CreatorRequest(Set<String> packagesToScan, String localMachineGenerationPath) {
     setPackagesToScan(packagesToScan);
     setLocalMachineGenerationPath(localMachineGenerationPath);
-    setInterfacesExcluded(new LinkedHashSet<>());
+    setInterfacesIncluded(new LinkedHashSet<>());
     setInterfacesExcluded(new LinkedHashSet<>());
   }
 

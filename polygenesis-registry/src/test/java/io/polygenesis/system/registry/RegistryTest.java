@@ -35,7 +35,7 @@ public class RegistryTest {
     assertThat(registry.getModels().size()).isEqualTo(1);
 
     assertThat(registry.getDeducers()).isNotNull();
-    assertThat(registry.getDeducers().size()).isEqualTo(0);
+    assertThat(registry.getDeducers().size()).isEqualTo(1);
 
     assertThat(registry.getGenerators()).isNotNull();
     assertThat(registry.getGenerators().size()).isEqualTo(0);

@@ -21,6 +21,7 @@
 package io.polygenesis.system.redux;
 
 import io.polygenesis.system.CoreModelRepository;
+import java.util.LinkedHashSet;
 
 /**
  * The type Default redux deducer.
@@ -31,6 +32,16 @@ public class DefaultReduxDeducer implements ReduxDeducer {
 
   @Override
   public ReduxRepository deduce(CoreModelRepository coreModelRepository) {
+    return new ReduxRepository(new LinkedHashSet<>());
+  }
+
+  @Override
+  public String name() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public String description() {
     throw new UnsupportedOperationException();
   }
 }
