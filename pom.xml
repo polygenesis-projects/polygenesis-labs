@@ -54,10 +54,10 @@
   </developers>
 
   <scm>
-    <connection>scm:git:git://github.com/polygenesis-io/polygenesis-labs.git</connection>
-    <developerConnection>scm:git:git@github.com:polygenesis-io/polygenesis-labs.git
+    <connection>scm:git:git://github.com/polygenesis-projects/polygenesis-labs.git</connection>
+    <developerConnection>scm:git:git@github.com:polygenesis-projects/polygenesis-labs.git
     </developerConnection>
-    <url>http://github.com/polygenesis-io/polygenesis-labs/tree/master</url>
+    <url>http://github.com/polygenesis-projects/polygenesis-labs/tree/master</url>
     <tag>HEAD</tag>
   </scm>
 
